@@ -1,3 +1,3 @@
-mongourl mongodb+srv://sreeharsha:sreeharsha@cluster0.ybpcjrc.mongodb.net/web-warrior?retryWrites=true&w=majority
+mongourl mongodb+srv://sreeharsha:sreeharsha@cluster0.ybpcjrc.mongodb.net/coinsquare?retryWrites=true&w=majority
 
-branch created
+

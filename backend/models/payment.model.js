@@ -7,7 +7,8 @@ const paymentSchema = mongoose.Schema({
       price_change_percentage_24h:Number,
       marketcap:Number,
       userID:String,
-      paymentType:String
+      paymentType:String,
+      quantity:Number
 },{versionKey:false})
 
 const PaymentModel = mongoose.model("payment",paymentSchema);

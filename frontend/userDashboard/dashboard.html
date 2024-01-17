@@ -7,14 +7,32 @@
 </head>
 <body>
     <h2 >Hello <span id="username"></span></h2>
-    <div id="userDetails">
+    <!-- <div id="userDetails">
         <div id="accHolding"></div>
         <div id="availBalance"></div>
         <div id="profitLoss"></div>
-    </div>
+    </div> -->
+    <div class="bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base leading-7 text-gray-600">Account Holdings</dt>
+              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$ <span id="accHolding">accHolding</span></dd>
+            </div>
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base leading-7 text-gray-600">Available Balance</dt>
+              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$ <span id="availBalance">availBalance</span></dd>
+            </div>
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base leading-7 text-gray-600">Profit/Loss Earned</dt>
+              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$ <span id="profitLoss">profit/loss</span></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
    <div id="ownedStocks"></div>
    <div id="articles"></div>
 
-
+<script src="./dashbrd.js"></script>
 </body>
 </html>

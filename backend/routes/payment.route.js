@@ -4,7 +4,40 @@ const express = require("express");
 
 const paymentRouter = express.Router();
 
-
+paymentRouter.get("/",async(req,res)=>{
+    try {
+        let query = [{_id:"123"}];
+        console.log(req.query.q)
+        if(req.query.q){
+            let search = { coinname: { $regex: new RegExp(`${req.query.q}`, "i") } };
+            console.log(search);
+            query.push({$match:search});
+           
+        }
+        else if(req.query.sort){
+            let type=1 ;
+            if(req.query.order == "desc"){
+                type=-1
+            }
+            let sortBy = req.query.sort
+            let sortStage = {$sort:{}};
+            sortStage.$sort[sortBy] =type
+            query = [sortStage];
+        }
+        if(req.query.page){
+            let page = (JSON.parse(req.query.page)-1)*JSON.parse(req.query.limit);
+            query.push({$skip:page});
+        }
+        if(req.query.limit){
+            query.push({$limit:JSON.parse(req.query.limit)});
+        }
+        let data = query.length>0?await PaymentModel.aggregate(query):await PaymentModel.find();
+        res.status(200).json({Message:"All payment details",Data:data});
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({Error:error});
+    }
+})
 
 paymentRouter.post("/new",async(req,res)=>{
     try {

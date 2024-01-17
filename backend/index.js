@@ -1,13 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const { connection } = require("./db");
+const { paymentRouter } = require("./routes/payment.route");
 
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
-
+app.use("/payments",paymentRouter);
 
 app.get("/",(req,res)=>{
     res.send("home");

@@ -78,10 +78,44 @@ userRouter.get('/logout',async(req,res)=>{
     }
 })
 
+// for uploading user profile picture
 
 
+let admin = require("firebase-admin");
+
+let serviceAccount = require("../firebase-admin-details.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket: 'gs://coinsquare-8dc2e.appspot.com',
+});
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 
+userRouter.patch('/profile/:userID', upload.single('image'), async (req, res) => {
+    try {
+        const bucket = admin.storage().bucket();
+        const file = bucket.file(`${req.params.userID}.jpg`);
+
+        const metadata = {
+            contentType: req.file.mimetype,
+        };
+
+        await file.save(req.file.buffer, { metadata });
+        const [url] = await file.getSignedUrl({
+            action: 'read',
+            expires: '01-01-2030', // Set an expiration date or period as needed
+        });
+        
+        await UserModel.findByIdAndUpdate({_id:`${req.params.userID}`},{image:url});
+        res.status(200).json({ message: 'File uploaded successfully',updated:url});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to upload file' });
+    }
+});
 
 
 

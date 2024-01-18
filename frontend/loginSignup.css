@@ -7,20 +7,33 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
-  background: #009579;
+  /* background: #009579; */
+  /* background-image: url('./images/WhatsApp Image 2024-01-19 at 01.01.40.jpeg'); */
+  background:rgb(86,168,109);
 }
+#loginImage1{
+  
+  height: 80vh;
+  width: 35%;
+  margin-left: 10%;
+  margin-top: 5%;
+  border-radius: 8%;
+  /* position: relative; */
+}
+
 .container {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 70%;
   transform: translate(-50%, -50%);
   max-width: 430px;
   width: 100%;
   background: #fff;
-  border-radius: 7px;
+  border-radius: 5%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+
 }
 .container .registration {
   display: none;
@@ -66,7 +79,7 @@ body {
 }
 .form input.button {
   color: #fff;
-  background: #009579;
+  background:rgb(38,40,42);
   font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 1px;
@@ -75,7 +88,7 @@ body {
   transition: 0.4s;
 }
 .form input.button:hover {
-  background: #006653;
+  background: rgb(38,40,42);
 }
 .signup {
   font-size: 17px;

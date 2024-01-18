@@ -1,4 +1,8 @@
 /* Basic styling for the container */
+body{
+  padding: 10px;
+}
+
 #container {
     margin: 20px;
   }
@@ -70,10 +74,21 @@
 
   /* Styling for the search bar and sorting buttons */
 #searchBarContainer {
+  background-color: #f8f9fa;
+  margin-top: 20px;
+  padding: 10px;
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  justify-content: space-around;
 }
+
+.form-inline {
+  display: flex;
+  align-items: center;
+}
+
+
+
 
 #searchBar {
   padding: 8px;
@@ -89,23 +104,20 @@
   display: flex;
   align-items: center;
   margin-right: 10px;
+  cursor: pointer;
 }
 
-h4 {
-  margin-right: 5px;
+.sort-button h4 {
+  margin-right: 10px;
 }
 
-button {
+.sort-button button {
   padding: 5px;
   cursor: pointer;
 }
 
 /* Styling for ascending and descending buttons */
-.ascending-price,
-.ascending-24h,
 .ascending-market,
-.descending-price,
-.descending-24h,
 .descending-market {
   background-color: #4CAF50;
   color: white;
@@ -114,23 +126,16 @@ button {
   margin-right: 5px;
 }
 
-/* Hover effect on ascending and descending buttons */
-.ascending-price:hover,
-.ascending-24h:hover,
+
 .ascending-market:hover,
-.descending-price:hover,
-.descending-24h:hover,
 .descending-market:hover {
   background-color: #45a049;
 }
 
-/* Additional styling specific to ascending buttons */
-.ascending-price,
-.ascending-24h,
-.ascending-market {
-  margin-right: 0;
-}
 
-/* ... (add specific styles for each sorting button if needed) */
+.paginated-buttons {
+  margin-right: 5px;
+  cursor: pointer;
+}
 
 

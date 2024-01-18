@@ -1,9 +1,23 @@
-const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&x_cg_demo_api_key=CG-XVgbsUJp9n4dxZmnx9iftNLW&order=market_cap_desc&per_page=10&page=1";
+const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&x_cg_demo_api_key=CG-XVgbsUJp9n4dxZmnx9iftNLW&per_page=10";
 const container = document.getElementById('container');
 
-function fetchingUrl() {
-    fetch(`${url}`)
-        .then(res => res.json())
+
+const sort_market_asc = document.getElementsByClassName('ascending-market')[0];
+const sort_market_desc = document.getElementsByClassName('descending-market')[0];
+const pagination_sec = document.getElementById('pagination-wrapper')
+// const parent_container = document.getElementById('parent-container');
+
+
+const page = 1;
+
+function fetchingUrl(queryparams,page) {
+    pagination_sec.innerHTML = "";
+    container.innerHTML = "";
+    fetch(`${url}${queryparams}&page=${page}`)
+        .then((res)=>{
+            pagination()
+            return res.json();
+        })
         .then(data => {
             container.append(coinsList(data));
             console.log(data);
@@ -69,3 +83,34 @@ function coinMaker(item) {
 
     return coin_div;
 }
+
+sort_market_asc.addEventListener('click',()=>{
+    fetchingUrl('&order=market_cap_asc');
+});
+
+sort_market_desc.addEventListener('click',()=>{
+    fetchingUrl('&order=market_cap_desc');
+})
+
+// pagination
+
+function pagination(){
+
+    // pagination_sec.innerHTML="";
+    for(let i=1; i<=10; i++){
+       const paginated_btn = document.createElement('button');
+       paginated_btn.className = "paginated-buttons";
+       paginated_btn.innerHTML = i;
+       paginated_btn.addEventListener("click",()=>{
+        container.innerHTML = "";
+        fetchingUrl("",i)
+    })
+    pagination_sec.append(paginated_btn);
+    }
+
+
+}
+
+
+
+

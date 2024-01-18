@@ -16,7 +16,7 @@
         <form action="#">
           <input type="text" placeholder="Enter your email" id="emaill" />
           <input type="password" placeholder="Enter your password" id="passl" />
-          <a href="#">Forgot password?</a>
+          <a href="forgotPassword.html">Forgot password?</a>
           <input type="button" class="button" value="Login" id="loginbtn" />
         </form>
         <div style="color: aqua" id="logged"></div>
@@ -60,7 +60,7 @@
     handleRegister();
   });
   const handleRegister = () => {
-    fetch("http://localhost:4500/user/register", {
+    fetch("http://localhost:8080/user/register", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -86,7 +86,7 @@
   });
 
   const handleLogin = () => {
-    fetch("http://localhost:4500/user/login", {
+    fetch("http://localhost:8080/user/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

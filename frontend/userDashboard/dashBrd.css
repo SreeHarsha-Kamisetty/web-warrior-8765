@@ -246,7 +246,7 @@ table{
   border-collapse:collapse ;
 }
 thead{
-  background:rgb(38,40,42);
+  background:rgb(51,51,51);
   color: #fff;
 }
 
@@ -266,7 +266,7 @@ tr:nth-child(even){
   background: #fff;
 }
 tfoot{
-  background:  rgb(38,40,42);
+  background:  rgb(51,51,51);
   font-weight: bold;
   color: #fff;
 }

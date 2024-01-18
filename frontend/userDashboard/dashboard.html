@@ -4,35 +4,194 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
+    <link rel="stylesheet" href="dashBrd.css">
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <h2 >Hello <span id="username"></span></h2>
-    <!-- <div id="userDetails">
-        <div id="accHolding"></div>
-        <div id="availBalance"></div>
-        <div id="profitLoss"></div>
-    </div> -->
-    <div class="bg-white py-24 sm:py-32">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-          <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
-            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt class="text-base leading-7 text-gray-600">Account Holdings</dt>
-              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$ <span id="accHolding">accHolding</span></dd>
+  <div class="sidebar">
+    <div class="logo"></div>
+    <ul class="menu">
+      <li  class="active">
+        <a href="#">
+          <i class="fas fa-tachometer-alt"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-user"></i>
+          <span>Profile</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-chart-bar"></i>
+          <span>Statistics</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-briefcase"></i>
+          <span>Carriers</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-question-circle"></i>
+          <span>FAQ</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-star"></i>
+          <span>Testimonials</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-cog"></i>
+          <span>Settings</span>
+        </a>
+      </li>
+      <li class="logout">
+        <a href="#">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+  <div class="main--content">
+    <div class="header--wrapper">
+      <div class="header--title">
+        <span>Primary</span>
+        <h2>Dashboard</h2>
+      </div>
+      <div class="user--info">
+        <div class="search--box">
+          <i class="fa-solid fa-search"></i>
+        <input type="search" placeholder="Search"/>
+        </div>
+        
+        <img src="https://www.shutterstock.com/image-photo/studio-portrait-happy-successful-confident-260nw-2123908883.jpg" alt="img">
+      </div>
+      
+    </div>
+    <div class="card-container">
+      <h3 class="main--title">Today's Data</h3>
+      <div class="card--wrapper">
+        <div class="payment--card light-red">
+          <div class="card--header">
+            <div class="amount">
+             <span class="title">Payment Amount</span>
+              <span class="amount--value">$500</span>
             </div>
-            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt class="text-base leading-7 text-gray-600">Available Balance</dt>
-              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$ <span id="availBalance">availBalance</span></dd>
+            <i class="fas fa-dollar-sign icon"></i>
+          </div>
+          <span class="card-details">**** **** **** 3456</span>
+        </div>
+        <div class="payment--card light-purple">
+          <div class="card--header">
+            <div class="amount">
+             <span class="title">Payment order</span>
+              <span class="amount--value">$500</span>
             </div>
-            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt class="text-base leading-7 text-gray-600">Profit/Loss Earned</dt>
-              <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">$ <span id="profitLoss">profit/loss</span></dd>
+            <i class="fas fa-list icon dark-purple"></i>
+          </div>
+          <span class="card-details">**** **** **** 3456</span>
+        </div>
+      
+        <div class="payment--card light-green">
+          <div class="card--header">
+            <div class="amount">
+             <span class="title">Payment Amount</span>
+              <span class="amount--value">$500</span>
             </div>
-          </dl>
+            <i class="fas fa-users icon dark-green"></i>
+          </div>
+          <span class="card-details">**** **** **** 3456</span>
+        </div>
+        <div class="payment--card light-blue">
+          <div class="card--header">
+            <div class="amount">
+             <span class="title">Payment Amount</span>
+              <span class="amount--value">$500</span>
+            </div>
+            <i class="fa-solid fa-check icon dark-blue"></i>
+          </div>
+          <span class="card-details">**** **** **** 3456</span>
         </div>
       </div>
-   <div id="ownedStocks"></div>
-   <div id="articles"></div>
+    </div>
 
+    <div class="tabular--wrapper">
+      <h3 class="main--title">Finance Data</h3>
+       <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Icon</th>
+              <th>Coin Name</th>
+              <th>Amount</th>
+              <th>Price-Change(24)%</th>
+              <th>Market Cap.</th>
+              <th>Transaction Type</th>
+            </tr>
+            
+          </thead>
+          <tbody>
+            <tr>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>gjhgj</td>
+            </tr>
+            <tr>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>gjhgj</td>
+
+            </tr>
+            <tr>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>gjhgj</td>
+
+            </tr>
+            <tr>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>hsdgsdk</td>
+              <td>gjhgj</td>
+
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="7">Total:$5754</td>
+            </tr>
+          </tfoot>
+        </table>
+       </div>
+    </div>
+  </div>
 <script src="./dashbrd.js"></script>
 </body>
 </html>

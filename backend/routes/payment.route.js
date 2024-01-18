@@ -1,12 +1,16 @@
 const { PaymentModel } = require("../models/payment.model");
 const express = require("express");
-
+const {auth} = require("../middleware/auth.middleware")
 
 const paymentRouter = express.Router();
 
+paymentRouter.use(auth);
+
 paymentRouter.get("/",async(req,res)=>{
     try {
-        let query = [{_id:"123"}];
+        let {userID} = req.body
+        console.log(userID)
+        let query = [{$match:{userID}}];
         console.log(req.query.q)
         if(req.query.q){
             let search = { coinname: { $regex: new RegExp(`${req.query.q}`, "i") } };
@@ -22,7 +26,8 @@ paymentRouter.get("/",async(req,res)=>{
             let sortBy = req.query.sort
             let sortStage = {$sort:{}};
             sortStage.$sort[sortBy] =type
-            query = [sortStage];
+            query.push(sortStage)
+            
         }
         if(req.query.page){
             let page = (JSON.parse(req.query.page)-1)*JSON.parse(req.query.limit);

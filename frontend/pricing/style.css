@@ -1,0 +1,73 @@
+/* Basic styling for the container */
+#container {
+    margin: 20px;
+  }
+  
+  /* Styling for the table */
+  .coin-list {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f2f2f2; /* Background color for the entire table */
+  }
+  
+  /* Styling for table rows */
+  .coin-div {
+    display: table-row;
+    height: 80px; /* Adjust the height as needed */
+  }
+  
+  /* Styling for alternate row colors */
+  .coin-div:nth-child(even) {
+    background-color: #f9f9f9; /* Alternate row background color */
+  }
+  
+  /* Styling for table cells */
+  .coin-div > * {
+    display: table-cell;
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  /* Styling for specific columns */
+  .coin-div .coin-image {
+    width: 40px;
+  }
+  
+  .coin-div .coin-name {
+    font-size: 16px; /* Adjusted font size for the name */
+  }
+  
+  .coin-div .trade-btn {
+    width: 80px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  /* Hover effect on buttons */
+  .coin-div .trade-btn:hover {
+    background-color: #45a049;
+  }
+
+  
+  /* ... (previous styles) */
+
+/* Styling for negative market price change */
+.coin-div .trade-btn.negative-change {
+    background-color: #ff6961; /* Red color for negative change */
+  }
+  
+  /* Styling for positive market price change */
+  .coin-div .trade-btn.positive-change {
+    background-color: #77dd77; /* Green color for positive change */
+  }
+
+  /* ... (previous styles) */
+
+/* Styling for table header */

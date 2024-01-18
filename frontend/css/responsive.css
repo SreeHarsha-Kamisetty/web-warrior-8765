@@ -1,0 +1,131 @@
+@media (max-width: 1120px) {}
+
+@media (max-width: 992px) {
+
+    .custom_nav-container .nav_search-btn {
+        background-position: center;
+        margin-top: 10px;
+    }
+
+    .slider_section .box {
+        margin: 75px 0 125px 0;
+    }
+
+    .client_section .box {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider_section .detail-box {
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+    .info_section .col-md-3 {
+        text-align: center;
+    }
+
+    .info_section .col-md-3:not(:nth-last-child(1)) {
+        margin-bottom: 35px;
+    }
+
+    .info_section .col-md-3>div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section.app_section {
+        padding: 65px 0;
+    }
+
+    section.app_section .img-box {
+        transform: none;
+        margin-top: 35px;
+    }
+
+    section.app_section .detail-box {
+        text-align: center;
+    }
+
+    .client_section .box {
+        width: 100%;
+    }
+
+    .info_section .info_contact .info_logo {
+        margin-bottom: 45px;
+    }
+
+    .info_section .info_form form input {
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .slider_section .detail-box h1 {
+        font-size: 3.5rem;
+    }
+
+    .slider_section .detail-box h2 {
+        font-size: 2.2rem;
+    }
+
+    section.app_section .detail-box .download_box {
+        flex-direction: column;
+    }
+
+    section.app_section .detail-box .download_box .btn-box {
+        margin-top: 15px;
+    }
+
+    .client_section .box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .client_section .box .client_id {
+        margin: 0;
+        margin-bottom: 15px;
+    }
+
+    .client_section .box .client_id {
+        padding: 15px;
+    }
+
+    .client_section .box .client_id::before {
+        clip-path: none;
+    }
+
+    .client_section .box .client_id::after {
+        top: 3%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.1);
+        filter: blur(10px);
+
+    }
+}
+
+@media (max-width: 480px) {}
+
+@media (max-width: 420px) {
+    .slider_section .detail-box h1 {
+        font-size: 2.5rem;
+    }
+
+    .slider_section .detail-box h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 360px) {}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1170px;
+    }
+}

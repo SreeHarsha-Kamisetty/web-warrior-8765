@@ -5,7 +5,8 @@ const {userRouter}=require('./routes/user.routes')
 const {otpRouter}=require('./routes/otp.routes')
 const { paymentRouter } = require("./routes/payment.route");
 const { forgotPassRouter } = require("./routes/forgotPassword.routes");
-
+require('dotenv');
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
@@ -18,11 +19,11 @@ app.use('/forget_password',forgotPassRouter)
 app.get("/",(req,res)=>{
     res.send("home");
 })
-app.listen(8080,async()=>{
+app.listen(PORT,async()=>{
     try {
         await connection
         console.log("connected to DB");
-        console.log(`Server is running at http://localhost:8080`);
+        console.log(`Server is running at http://localhost:${PORT}`);
     } catch (error) {
         console.log(error);
     }

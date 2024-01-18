@@ -52,22 +52,85 @@
   
   /* Hover effect on buttons */
   .coin-div .trade-btn:hover {
-    background-color: #45a049;
+    background-color: #37c037;
   }
 
   
-  /* ... (previous styles) */
+
 
 /* Styling for negative market price change */
 .coin-div .trade-btn.negative-change {
     background-color: #ff6961; /* Red color for negative change */
   }
   
-  /* Styling for positive market price change */
+
   .coin-div .trade-btn.positive-change {
-    background-color: #77dd77; /* Green color for positive change */
+    background-color: #77dd77; 
   }
 
-  /* ... (previous styles) */
+  /* Styling for the search bar and sorting buttons */
+#searchBarContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
-/* Styling for table header */
+#searchBar {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+#searchButton {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.sort-button {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+h4 {
+  margin-right: 5px;
+}
+
+button {
+  padding: 5px;
+  cursor: pointer;
+}
+
+/* Styling for ascending and descending buttons */
+.ascending-price,
+.ascending-24h,
+.ascending-market,
+.descending-price,
+.descending-24h,
+.descending-market {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+/* Hover effect on ascending and descending buttons */
+.ascending-price:hover,
+.ascending-24h:hover,
+.ascending-market:hover,
+.descending-price:hover,
+.descending-24h:hover,
+.descending-market:hover {
+  background-color: #45a049;
+}
+
+/* Additional styling specific to ascending buttons */
+.ascending-price,
+.ascending-24h,
+.ascending-market {
+  margin-right: 0;
+}
+
+/* ... (add specific styles for each sorting button if needed) */
+
+

@@ -4,6 +4,7 @@ const { connection } = require("./db");
 const {userRouter}=require('./routes/user.routes')
 const {otpRouter}=require('./routes/otp.routes')
 const { paymentRouter } = require("./routes/payment.route");
+const { forgotPassRouter } = require("./routes/forgotPassword.routes");
 
 
 const app = express();
@@ -13,7 +14,7 @@ app.use(cors());
 app.use("/payments",paymentRouter);
 app.use("/user",userRouter);
 app.use('/otp',otpRouter)
-
+app.use('/forget_password',forgotPassRouter)
 app.get("/",(req,res)=>{
     res.send("home");
 })

@@ -4,11 +4,11 @@ const {auth} = require("../middleware/auth.middleware")
 
 const paymentRouter = express.Router();
 
-paymentRouter.use(auth);
+// paymentRouter.use(auth);
 
 paymentRouter.get("/",async(req,res)=>{
     try {
-        let {userID} = req.body
+        let {userID} = {userID:"65a87073f08eb630cb7866f3"} || req.body
         console.log(userID)
         let query = [{$match:{userID}}];
         console.log(req.query.q)

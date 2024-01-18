@@ -2,6 +2,7 @@ const express = require('express');
 const { UserModel } = require('../models/user.models');
 const bcrypt = require('bcrypt');
 const jwt=require('jsonwebtoken');
+const { BlackListModel } = require('../models/blacklist.models');
 const userRouter = express.Router();
 
 userRouter.post('/register', async (req, res) => {
@@ -62,6 +63,28 @@ userRouter.post('/login',async(req,res)=>{
         res.status(400).send(err);
     }
 })
+
+
+//logout
+userRouter.get('/logout',async(req,res)=>{
+    const access_token=req.headers.authorization?.split(" ")[1];
+    try{
+        const blacklist=new BlackListModel({access_token:access_token});
+        await blacklist.save();
+        res.status(200).json({msg:"Hey! user you are logout"});
+    }
+    catch(err){
+        res.status(400).json({err:err});
+    }
+})
+
+
+
+
+
+
+
+
 
 
 module.exports = {

@@ -27,7 +27,7 @@
   /* rgb(21,22,24) */
 }
 .sidebar:hover{
-  width: 250px;
+  width: 300px;
   transition: 0.5s;
 }
 .logo{
@@ -147,6 +147,7 @@ padding: 4px 12px;
 }
 .card--wrapper{
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 1rem;
 }
@@ -241,24 +242,26 @@ table{
   border-collapse:collapse ;
 }
 thead{
-  background:hsl(220, 5%, 20%);;
+  background:hsl(220, 5%, 20%);
   color: #fff;
 }
 
 th{
   padding: 15px;
   text-align: left;
+
 }
 tbody{
-  background: #f2f2f2;
+  color: hsl(240, 7%, 18%);
 }
 td{
   padding: 15px;
   font-size: 14px;
-  color: #333;
+  color: #fff;
 }
 tr:nth-child(even){
-  background: #fff;
+  background: hsl(240, 7%, 30%);
+ 
 }
 table{
   border-collapse: collapse;
@@ -287,7 +290,71 @@ tfoot td{
   margin: 5px;
   width: 30px;
 }
+#btn-foot button:hover{
+  color: #ebe9e9;
+  background: #777777;
+}
 
+/* Add these styles after your existing CSS */
+
+/* Profile Modal */
+.modal-content {
+  background: hsl(240, 7%, 30%);
+  color: #ebe9e9;
+  border-radius: 10px;
+}
+
+.modal-header {
+  background: hsl(220, 5%, 20%);
+  color: #fff;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+}
+
+.modal-body {
+  background: hsl(240, 7%, 30%);
+}
+
+.modal-footer {
+  background: hsl(220, 5%, 20%);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Edit Profile Image Modal */
+#edit-profile-image-modal .modal-content {
+  background: hsl(240, 7%, 30%);
+  color: #ebe9e9;
+  border-radius: 10px;
+}
+
+#edit-profile-image-modal .modal-header {
+  background: hsl(220, 5%, 20%);
+  color: #fff;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+}
+
+#edit-profile-image-modal .modal-body {
+  background: hsl(240, 7%, 30%);
+}
+
+#edit-profile-image-modal .modal-footer {
+  background: hsl(220, 5%, 20%);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Adjust the width of the Profile Modal */
+#profile-model .modal-dialog {
+  max-width: 800px;
+}
+
+/* Hover effect on modal buttons */
+.modal-footer button:hover {
+  color: #ebe9e9;
+  background: #777777;
+}
 
 
 

@@ -104,12 +104,12 @@
           let logged = document.getElementById("logged");
           logged.textContent = "Log in Successful";
           localStorage.setItem("token", data.access_token);
-          // setTimeout(() => {
-          //   location.href = "./dash.html";
-          // }, 2000);
+          setTimeout(() => {
+            window.location.href = "./userDashboard/dashboard.html";
+          }, 0);
         } else {
           console.log("user is not reg");
-          alert("wrong Credential")
+          alert("wrong Credential");
         }
       })
       .catch((err) => console.log(err));

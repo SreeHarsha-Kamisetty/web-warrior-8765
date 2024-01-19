@@ -80,7 +80,7 @@
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="#"> Login</a>
+                    <a class="nav-link" id="id77" href="#"> Login</a>
                   </li>
                 </ul>
                 <div class="user_option">
@@ -352,3 +352,10 @@
     <!-- end info_section -->
   </body>
 </html>
+<script>
+  let login_btn = document.getElementById("id77");
+
+  login_btn.addEventListener("click", (e) => {
+    location.href = "./loginSignup.html";
+  });
+</script>

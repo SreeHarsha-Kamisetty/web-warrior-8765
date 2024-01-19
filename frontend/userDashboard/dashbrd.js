@@ -62,10 +62,10 @@ function fetchData(page) {
            
         });
 }
-
 function showModal() {
     // Assuming your modal has an ID of "myModal"
-    const myModal = new bootstrap.Modal(document.getElementById('myModal'));
+    const id=document.getElementById('myModal')
+    const myModal = new bootstrap.Modal(id);
     myModal.show();
 }
 
@@ -96,7 +96,17 @@ btn.addEventListener('click',()=>{
         console.log(data.Data)
         appenRow(data.Data);
          // Call and show the modal here
-         showModal();
-         pagination_btn.innerHTML="";
+          
+            showModal();
+        pagination_btn.innerHTML="";
     })
 })
+
+
+// profile model use
+const prof_btn = document.getElementById('prof-btn');
+prof_btn.addEventListener('click', () => {
+    const profile = new bootstrap.Modal(document.getElementById('profile-model'));
+    profile.show();
+    console.log('click');
+});

@@ -81,13 +81,13 @@ userRouter.get('/logout',async(req,res)=>{
 // for uploading user profile picture
 
 
-let admin = require("firebase-admin");
+let admin = require("firebase-admin"); // firebase-admin
 
-let serviceAccount = require("../firebase-admin-details.json");
+let serviceAccount = require("../firebase-admin-details.json"); // file-path for admin details
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: 'gs://coinsquare-8dc2e.appspot.com',
+  storageBucket: 'gs://coinsquare-8dc2e.appspot.com', // firebase storage path
 });
 const multer = require("multer");
 const storage = multer.memoryStorage();
@@ -107,7 +107,7 @@ userRouter.patch('/profile/:userID', upload.single('image'), async (req, res) =>
         const [url] = await file.getSignedUrl({
             action: 'read',
             expires: '01-01-2030', // Set an expiration date or period as needed
-        });
+        }); // url for the uploaded image
         
         await UserModel.findByIdAndUpdate({_id:`${req.params.userID}`},{image:url});
         res.status(200).json({ message: 'File uploaded successfully',updated:url});
@@ -117,7 +117,22 @@ userRouter.patch('/profile/:userID', upload.single('image'), async (req, res) =>
     }
 });
 
+// route to get user profile picture
 
+userRouter.get("/profile/:userID",async(req,res)=>{
+    try {
+        let {userID} = req.params
+        let user = await UserModel.findOne({_id:userID});
+        if(user){
+            res.status(200).json({image:user.image|| "https://firebasestorage.googleapis.com/v0/b/coinsquare-8dc2e.appspot.com/o/default.jpg?alt=media&token=fa163076-3ed8-48b2-875b-3b370c66f251"})
+        } // If no profile picture then default would be sent 
+        else{
+            res.status(404).json({Error:"User Not Found"})
+        }
+    } catch (error) {
+        res.status(500).json({Error:error})
+    }
+})
 
 
 

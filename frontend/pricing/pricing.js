@@ -28,11 +28,6 @@ function fetchingUrl(queryparams,page) {
 
 fetchingUrl();
 
-// filtering function
-function fetchingBySearch(search_url,searchQuery){
-
-}
-
 function coinsList(data) {
     container.innerHTML="";
     data.forEach((item) => {
@@ -62,13 +57,13 @@ function coinMaker(item) {
     const price=document.createElement('td');
     const current_price = document.createElement('span');
     current_price.className = "current-price";
-    current_price.textContent = `$${item.current_price}`;
+    current_price.textContent = `$ ${item.current_price}`;
     price.appendChild(current_price)
 
     const rate=document.createElement('td'); 
     const price_change = document.createElement('span');
-    price_change.className = "price-change";
-    price_change.textContent = `${item.price_change_percentage_24h} %`;
+    price_change.className = `price-change ${parseFloat(item.price_change_percentage_24h) >= 0 ? 'positive-change' : 'negative-change'}`;
+    price_change.textContent = `${parseFloat(item.price_change_percentage_24h).toFixed(2)} %`;
     rate.appendChild(price_change)
    
     const mp=document.createElement('td'); 
@@ -80,7 +75,7 @@ function coinMaker(item) {
     const btn=document.createElement('td');
     const button = document.createElement('button');
     button.className = "trade-btn";
-    button.innerHTML = "Trade";
+    button.innerHTML = "TRADE";
     btn.appendChild(button);
 
     // Set button color based on market price change
@@ -89,6 +84,8 @@ function coinMaker(item) {
     } else {
         button.classList.add('positive-change');
     }
+
+
 
    coin_div.append(imgTd,nameTd,price,rate,mp,btn);
 
@@ -149,12 +146,4 @@ selected_input.addEventListener('input',()=>{
     console.log(selected_input.value);
 })
 
-// function searchCoin(){
-//    const selected_option = selected_input.value;
-//    if(selected_option !== ""){
-//     fetchingBySearch(search_url,`search?query=${selected_option}`);
-//    }
-//    else{
-//     fetchingUrl("","");
-//    }
-// }
+

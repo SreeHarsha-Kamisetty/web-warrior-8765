@@ -1,11 +1,12 @@
 const url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&x_cg_demo_api_key=CG-XVgbsUJp9n4dxZmnx9iftNLW&per_page=10";
+const search_url = "https://api.coingecko.com/api/v3/"
 const container = document.getElementById('container');
 
 
 const sort_market_asc = document.getElementsByClassName('ascending-market')[0];
 const sort_market_desc = document.getElementsByClassName('descending-market')[0];
-const pagination_sec = document.getElementById('pagination-wrapper')
-// const parent_container = document.getElementById('parent-container');
+const pagination_sec = document.getElementById('pagination-wrapper');
+const selected_input = document.getElementById('coin-input');
 
 
 const page = 1;
@@ -19,53 +20,68 @@ function fetchingUrl(queryparams,page) {
             return res.json();
         })
         .then(data => {
-            container.append(coinsList(data));
-            console.log(data);
+            coinsList(data)
+            // console.log(data);
         })
         .catch(err => console.log(err));
 }
 
 fetchingUrl();
 
-function coinsList(data) {
-    const coins_list = document.createElement('div');
-    coins_list.className = "coin-list";
+// filtering function
+function fetchingBySearch(search_url,searchQuery){
 
+}
+
+function coinsList(data) {
+    container.innerHTML="";
     data.forEach((item) => {
-        coins_list.append(coinMaker(item));
-        console.log(item);
+        container.append(coinMaker(item));
+        // console.log(item);
     });
-    return coins_list;
 }
 
 function coinMaker(item) {
-    const coin_div = document.createElement('div');
+    const coin_div = document.createElement('tr');
     coin_div.className = "coin-div";
 
+    const imgTd=document.createElement('td');
     const image = document.createElement('img');
     image.src = item.image;
     image.className = "coin-image";
     image.alt = "coin image";
+    imgTd.appendChild(image)
 
+
+    const nameTd=document.createElement('td');
     const name = document.createElement('h1');
     name.className = "coin-name";
     name.textContent = item.id;
+    nameTd.appendChild(name)
 
+    const price=document.createElement('td');
     const current_price = document.createElement('span');
     current_price.className = "current-price";
-    current_price.textContent = item.current_price;
+    current_price.textContent = `$${item.current_price}`;
+    price.appendChild(current_price)
 
+    const rate=document.createElement('td'); 
     const price_change = document.createElement('span');
     price_change.className = "price-change";
-    price_change.textContent = item.price_change_percentage_24h;
-
+    price_change.textContent = `${item.price_change_percentage_24h} %`;
+    rate.appendChild(price_change)
+   
+    const mp=document.createElement('td'); 
     const market_price = document.createElement('span');
     market_price.className = "market-price";
     market_price.textContent = item.market_cap;
+    mp.appendChild(market_price);
 
+    const btn=document.createElement('td');
     const button = document.createElement('button');
     button.className = "trade-btn";
     button.innerHTML = "Trade";
+    btn.appendChild(button);
 
     // Set button color based on market price change
     if (parseFloat(item.price_change_percentage_24h) < 0) {
@@ -74,12 +90,7 @@ function coinMaker(item) {
         button.classList.add('positive-change');
     }
 
-    coin_div.append(image);
-    coin_div.append(name);
-    coin_div.append(current_price);
-    coin_div.append(price_change);
-    coin_div.append(market_price);
-    coin_div.append(button);
+   coin_div.append(imgTd,nameTd,price,rate,mp,btn);
 
     return coin_div;
 }
@@ -111,6 +122,39 @@ function pagination(){
 
 }
 
+// filtering 
+var coindata = [];
 
+async function getData(sample) {
+    try {
+        let res = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&x_cg_demo_api_key=CG-XVgbsUJp9n4dxZmnx9iftNLW&order=market_cap_desc&per_page=250&page=1&sparkline=false&locale=en")
+        let data = await res.json();
+        coindata = [...data]
+        console.log(coindata);
+        
+        const regex = new RegExp(sample, 'i');
+        
+        coindata = coindata.filter(item => regex.test(item.id))
+        
+        let req_data = coindata.splice(0,10);
+        coinsList(req_data)
+        console.log(req_data);
+    } catch (error) {
+        console.log(error)
+    }
+}
 
+selected_input.addEventListener('input',()=>{
+    getData(selected_input.value)
+    console.log(selected_input.value);
+})
 
+// function searchCoin(){
+//    const selected_option = selected_input.value;
+//    if(selected_option !== ""){
+//     fetchingBySearch(search_url,`search?query=${selected_option}`);
+//    }
+//    else{
+//     fetchingUrl("","");
+//    }
+// }

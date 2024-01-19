@@ -21,7 +21,7 @@ function createColumn(item){
     img.alt=item.coinname;
     imgTd.append(img);
     row.appendChild(imgTd)
-
+                                             
     const name=document.createElement('td')
     name.textContent=item.coinname;
     row.appendChild(name)

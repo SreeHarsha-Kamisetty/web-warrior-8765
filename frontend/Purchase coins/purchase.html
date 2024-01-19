@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Section</title>
+    <link rel="stylesheet" href="purchase.css">
+</head>
+<body>
+
+<form id="tradeForm">
+    <h2 id="coinName">Coin Name</h2>
+
+
+    <div>
+        <label for="coinPrice">Price: $</label>
+        <span id="coinPrice">0.00</span>
+    </div>
+
+    <!-- Input section for user quantity -->
+    <div>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" placeholder="Enter quantity" required>
+    </div>
+
+    <!-- Available balance section -->
+    <div>
+        <label for="availableBalance">Available Balance: $</label>
+        <span id="availableBalance">0.00</span>
+    </div>
+
+    <!-- Add funds button -->
+    <button id="addFunds" type="button">Add Funds</button>
+
+    <!-- Total payment section -->
+    <div>
+        <label for="totalPayment">Total Payment: $</label>
+        <span id="totalPayment">0.00</span>
+    </div>
+
+    <!-- Buy and Sell buttons -->
+    <button id="buyButton" type="submit">Buy</button>
+    <button id="sellButton" type="submit">Sell</button>
+</form>
+
+
+
+</body>
+</html>

@@ -1,110 +1,117 @@
+/* Add this CSS for the table heading */
+thead tr td {
+  width: 20%; /* Adjust the width as needed for equal spacing */
+  text-align: center; /* Center-align text in cells */
+}
+
 /* Basic styling for the container */
-body{
+body {
   padding: 10px;
+  background-color: rgba(246, 246, 246, 0.367);
 }
 
 #container {
-    margin: 20px;
-  }
-  
-  /* Styling for the table */
-  .coin-list {
-    display: table;
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #f2f2f2; /* Background color for the entire table */
-  }
-  
-  /* Styling for table rows */
-  .coin-div {
-    display: table-row;
-    height: 80px; /* Adjust the height as needed */
-  }
-  
-  /* Styling for alternate row colors */
-  .coin-div:nth-child(even) {
-    background-color: #f9f9f9; /* Alternate row background color */
-  }
-  
-  /* Styling for table cells */
-  .coin-div > * {
-    display: table-cell;
-    padding: 10px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-    text-align: center;
-  }
-  
-  /* Styling for specific columns */
-  .coin-div .coin-image {
-    width: 40px;
-  }
-  
-  .coin-div .coin-name {
-    font-size: 16px; /* Adjusted font size for the name */
-  }
-  
-  .coin-div .trade-btn {
-    width: 80px;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-  }
-  
-  /* Hover effect on buttons */
-  .coin-div .trade-btn:hover {
-    background-color: #37c037;
-  }
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 0.5%;
+}
 
-  
+.heading {
+  font-family: 'Teko', sans-serif;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  letter-spacing: 4px;
+  font-size: x-large;
+}
 
+/* Styling for the table */
+.coin-list {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f2f2f2;
+}
+
+/* Styling for table rows */
+.coin-div {
+  display: table-row;
+  height: 80px;
+}
+
+/* Styling for alternate row colors */
+.coin-div:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Styling for table cells */
+.coin-div > * {
+  display: table-cell;
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Styling for specific columns */
+.coin-div .coin-image {
+  width: 40px;
+}
+
+.coin-div .coin-name {
+  font-size: 16px;
+}
+
+.coin-div .trade-btn {
+  width: 80px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Hover effect on buttons */
+.coin-div .trade-btn:hover {
+  background-color: #37c037;
+}
 
 /* Styling for negative market price change */
 .coin-div .trade-btn.negative-change {
-    background-color: #ff6961; /* Red color for negative change */
-  }
-  
-
-  .coin-div .trade-btn.positive-change {
-    background-color: #77dd77; 
-  }
-
-  /* Styling for the search bar and sorting buttons */
-#searchBarContainer {
-  background-color: #f8f9fa;
-  margin-top: 20px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  background-color: #ff6961;
 }
 
+.coin-div .trade-btn.positive-change {
+  background-color: #77dd77;
+}
+
+/* Styling for the search bar and sorting buttons */
+#searchBarContainer {
+  background-color: #f8f9fa;
+  margin-top: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around; /* Align items with space in between */
+  padding: 10px; /* Add padding for better spacing */
+  margin-left: 10px;
+}
+
+/* Style for the form inline */
 .form-inline {
   display: flex;
   align-items: center;
 }
-
-
-
 
 #searchBar {
   padding: 8px;
   margin-right: 10px;
 }
 
-#searchButton {
-  padding: 8px;
-  cursor: pointer;
-}
-
 .sort-button {
   display: flex;
   align-items: center;
-  margin-right: 10px;
   cursor: pointer;
+  margin-left: 20%;
 }
 
 .sort-button h4 {
@@ -126,16 +133,58 @@ body{
   margin-right: 5px;
 }
 
-
 .ascending-market:hover,
 .descending-market:hover {
   background-color: #45a049;
 }
-
 
 .paginated-buttons {
   margin-right: 5px;
   cursor: pointer;
 }
 
+.btn-outline-success {
+  margin-left: 10px;
+}
 
+/* Style for the search box */
+.search--box {
+  background: rgb(237, 237, 237);
+  border-radius: 15px;
+  color: rgb(43, 101, 248);
+  display: flex;
+  align-items: center;
+  /* gap: 5px; */
+  padding: 1% 2%;
+}
+
+.search--box input {
+  background: transparent;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+.search--box i {
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+.search--box i:hover {
+  transform: scale(1.2);
+}
+
+.Trade {
+  padding-right: 100px;
+}
+
+.crypto-table{
+  width: 100%;
+}
+
+#pagination-wrapper{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}

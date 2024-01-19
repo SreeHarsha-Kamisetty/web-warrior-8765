@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="loginSignup.css" />
   </head>
   <body>
+    <img  id="loginImage1" src="./images/WhatsApp Image 2024-01-19 at 01.01.40.jpeg" alt="image" >
     <div class="container">
       <input type="checkbox" id="check" />
       <div class="login form">
@@ -103,12 +104,12 @@
           let logged = document.getElementById("logged");
           logged.textContent = "Log in Successful";
           localStorage.setItem("token", data.access_token);
-          // setTimeout(() => {
-          //   location.href = "./dash.html";
-          // }, 2000);
+          setTimeout(() => {
+            window.location.href = "./userDashboard/dashboard.html";
+          }, 0);
         } else {
           console.log("user is not reg");
-          alert("wrong Credential")
+          alert("wrong Credential");
         }
       })
       .catch((err) => console.log(err));

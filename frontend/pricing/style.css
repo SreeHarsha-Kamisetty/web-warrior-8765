@@ -1,4 +1,8 @@
 /* Basic styling for the container */
+body{
+  padding: 10px;
+}
+
 #container {
     margin: 20px;
   }
@@ -52,22 +56,86 @@
   
   /* Hover effect on buttons */
   .coin-div .trade-btn:hover {
-    background-color: #45a049;
+    background-color: #37c037;
   }
 
   
-  /* ... (previous styles) */
+
 
 /* Styling for negative market price change */
 .coin-div .trade-btn.negative-change {
     background-color: #ff6961; /* Red color for negative change */
   }
   
-  /* Styling for positive market price change */
+
   .coin-div .trade-btn.positive-change {
-    background-color: #77dd77; /* Green color for positive change */
+    background-color: #77dd77; 
   }
 
-  /* ... (previous styles) */
+  /* Styling for the search bar and sorting buttons */
+#searchBarContainer {
+  background-color: #f8f9fa;
+  margin-top: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
-/* Styling for table header */
+.form-inline {
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+#searchBar {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+#searchButton {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.sort-button {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.sort-button h4 {
+  margin-right: 10px;
+}
+
+.sort-button button {
+  padding: 5px;
+  cursor: pointer;
+}
+
+/* Styling for ascending and descending buttons */
+.ascending-market,
+.descending-market {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+
+.ascending-market:hover,
+.descending-market:hover {
+  background-color: #45a049;
+}
+
+
+.paginated-buttons {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+

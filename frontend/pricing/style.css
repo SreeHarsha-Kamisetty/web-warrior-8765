@@ -4,10 +4,51 @@ thead tr td {
   text-align: center; /* Center-align text in cells */
 }
 
+thead{
+  font-family:'Open Sans', sans-serif;
+  font-size: larger;
+}
+
+
+.heading-coin-image{
+  display: flex;
+  flex-wrap: wrap;
+  width: 9%;
+}
+
+.heading-coin-image img{
+  width: 150px;
+  border-radius: 50%;
+}
+
 /* Basic styling for the container */
 body {
   padding: 10px;
-  background-color: rgba(246, 246, 246, 0.367);
+  background-color: #1a1a1a; 
+  color: #ffffff;
+}
+
+
+
+td .current-price{
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  color: #e0e0e0;
+  letter-spacing: 1px;
+}
+
+.price-change{
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  color: #e0e0e0;
+  letter-spacing: 1px;
+}
+
+.market-price{
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  color: #e0e0e0;
+  letter-spacing: 1px;
 }
 
 #container {
@@ -18,10 +59,14 @@ body {
 
 .heading {
   font-family: 'Teko', sans-serif;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   margin-top: 20px;
+  margin-left: 50px;
   letter-spacing: 4px;
   font-size: x-large;
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
 }
 
 /* Styling for the table */
@@ -29,25 +74,31 @@ body {
   display: table;
   width: 100%;
   border-collapse: collapse;
-  background-color: #f2f2f2;
+  background-color: #2b2b2b;
+  
 }
 
 /* Styling for table rows */
 .coin-div {
   display: table-row;
   height: 80px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* Styling for alternate row colors */
 .coin-div:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #212121; 
+  border: none;
+  outline: none;
 }
+
 
 /* Styling for table cells */
 .coin-div > * {
   display: table-cell;
   padding: 10px;
-  border: 1px solid #ddd;
+  /* border: 1px solid #535353; */
+  border-right: none;
   font-size: 14px;
   text-align: center;
 }
@@ -59,35 +110,46 @@ body {
 
 .coin-div .coin-name {
   font-size: 16px;
+  color: #e0e0e0;
 }
 
 .coin-div .trade-btn {
   width: 80px;
-  background-color: #4CAF50;
+  /* background-color: #4CAF50; */
   color: white;
   cursor: pointer;
   padding: 8px;
   border: none;
   border-radius: 4px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* Hover effect on buttons */
-.coin-div .trade-btn:hover {
-  background-color: #37c037;
+.coin-div .trade-btn.positive-change:hover {
+  background-color: #003100;
+}
+
+.coin-div .trade-btn.negative-change:hover{
+  background-color: #500400;
 }
 
 /* Styling for negative market price change */
 .coin-div .trade-btn.negative-change {
-  background-color: #ff6961;
+  background-color: #7b0600;
+}
+
+.negative-change{
+  color: #b32116;
 }
 
 .coin-div .trade-btn.positive-change {
-  background-color: #77dd77;
+  background-color: #004d00;
 }
+
 
 /* Styling for the search bar and sorting buttons */
 #searchBarContainer {
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
   margin-top: 2%;
   display: flex;
   align-items: center;
@@ -106,6 +168,8 @@ body {
   padding: 8px;
   margin-right: 10px;
 }
+
+
 
 .sort-button {
   display: flex;
@@ -126,7 +190,7 @@ body {
 /* Styling for ascending and descending buttons */
 .ascending-market,
 .descending-market {
-  background-color: #4CAF50;
+  background-color: #094ba1;
   color: white;
   border: none;
   border-radius: 4px;
@@ -149,13 +213,18 @@ body {
 
 /* Style for the search box */
 .search--box {
-  background: rgb(237, 237, 237);
+  background: rgb(82, 82, 82);
+  /* background-color: white; */
   border-radius: 15px;
-  color: rgb(43, 101, 248);
+  color: rgb(202, 203, 206);
   display: flex;
   align-items: center;
   /* gap: 5px; */
   padding: 1% 2%;
+}
+
+#coin-input{
+  color: #ffffff;
 }
 
 .search--box input {
@@ -184,7 +253,20 @@ body {
 }
 
 #pagination-wrapper{
-  margin-top: 20px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
+  gap: 0.5%;
 }
+
+.paginated-buttons{
+  width: 3%;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+/* header section */
+
+

@@ -8,7 +8,11 @@ const paymentSchema = mongoose.Schema({
       marketcap:Number,
       userID:String,
       paymentType:String,
-      quantity:Number
+      quantity:Number,
+      date:{
+        type:Date,
+        default:Date.now
+      }
 },{versionKey:false})
 
 const PaymentModel = mongoose.model("payment",paymentSchema);

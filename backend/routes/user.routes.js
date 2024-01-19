@@ -134,7 +134,21 @@ userRouter.get("/profile/:userID",async(req,res)=>{
     }
 })
 
+userRouter.patch("/addfunds/:userID",async(req,res)=>{
+    try {
+        let {userID} = req.params;
 
+        let amount = Number(req.body.balance);
+        let user = await UserModel.findOne({_id:userID});
+        let balance = user.balance
+        balance+=amount
+        await UserModel.findByIdAndUpdate(userID,{balance:balance});
+        res.status(200).json({Message:"Balance updated"})
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({Error:error});
+    }
+})
 
 module.exports = {
     userRouter,

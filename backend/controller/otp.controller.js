@@ -47,7 +47,7 @@ const sendOtp = async ({ email, subject, message, duration = 1 }) => {
         const mailOptions = {
             from: process.env.SMTP_MAIL,
             to: email,
-            subject: "OTP form Stock Market",
+            subject: "OTP form CoinSquare",
             html: `<p>${message}</p><p style="color:tomato; font-size:25px;letter-spacing:2px;"><b>${generatedOTP}</b></p>`,
         };
 

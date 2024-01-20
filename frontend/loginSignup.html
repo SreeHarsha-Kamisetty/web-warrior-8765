@@ -104,6 +104,16 @@
           let logged = document.getElementById("logged");
           logged.textContent = "Log in Successful";
           localStorage.setItem("token", data.access_token);
+          if (data.user.email) {
+          localStorage.setItem('email', JSON.stringify(data.user.email));
+        } else {
+          console.error("Email not found in the user object:", data.user);
+        }
+        if (data.user.name) {
+          localStorage.setItem('name', JSON.stringify(data.user.name));
+        } else {
+          console.error("Name not found in the user object:", data.user);
+        }
           setTimeout(() => {
             window.location.href = "./userDashboard/dashboard.html";
           }, 0);

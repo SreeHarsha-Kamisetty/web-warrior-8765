@@ -12,9 +12,11 @@ const paymentRouter = express.Router();
 // Able to sort by any fields available using ?sort=field&order=asc(or desc) - price,price_change_percentage_24h,marketcap,quantity,paymentType (asc will give buy first desc will give sell)
 // Able to apply pagination using ?page=pagenumber&limit=limitperpage
 
-paymentRouter.get("/",async(req,res)=>{
+paymentRouter.get("/:userID",async(req,res)=>{
     try {
-        let {userID} =  {userID:"65a87073f08eb630cb7866f3"} ||  req.body 
+        let {userID} =   req.params 
+        // {userID:"65a87073f08eb630cb7866f3"} || 
+
         // console.log(userID)
         let query = [{$match:{userID}}];
         // console.log(req.query.q)
@@ -39,7 +41,7 @@ paymentRouter.get("/",async(req,res)=>{
         let count = [...query]
         count.push({$count:"total"});
         let total_count = await PaymentModel.aggregate(count);
-        
+        let total = total_count.length > 0 ? total_count[0].total : 0;
         if(req.query.page){
             let page = (JSON.parse(req.query.page)-1)*JSON.parse(req.query.limit||0);
             query.push({$skip:page});
@@ -48,7 +50,7 @@ paymentRouter.get("/",async(req,res)=>{
             query.push({$limit:JSON.parse(req.query.limit)});
         }
         let data = query.length>0?await PaymentModel.aggregate(query):await PaymentModel.find();
-        res.status(200).json({Message:"All payment details",total:total_count[0].total,Data:data});
+        res.status(200).json({Message:"All payment details",total:total,Data:data});
     } catch (error) {
         console.log(`${error} here`);
         res.status(400).json({Error:error});
@@ -61,7 +63,7 @@ paymentRouter.post("/new",async(req,res)=>{
     try {
         let payload = req.body;
         let total = +payload.price * +payload.quantity
-        console.log(total);
+        // console.log(total);
         let new_payment = new PaymentModel(payload);
         await new_payment.save();
         let user = await UserModel.findOne({_id:req.body.userID});
@@ -78,7 +80,7 @@ paymentRouter.post("/new",async(req,res)=>{
             balance:new_balance,
             investements:new_investments
         }
-        console.log(updated_user);
+        // console.log(updated_user);
         await UserModel.findByIdAndUpdate({_id:req.body.userID},updated_user)
         res.status(200).json({Message:"Payment Successful",Details:new_payment});
 
@@ -109,16 +111,17 @@ paymentRouter.delete("/delete/:id",async(req,res)=>{
     }
 })
  // 
-paymentRouter.get("/available/:coin",async(req,res)=>{
-    let {userID} = req.body;
+paymentRouter.get("/available/:userID/:coin",async(req,res)=>{
+    let {userID} = req.params;
     let coin = req.params.coin
     try {
         let bought = await PaymentModel.aggregate([{$match:{userID:userID,paymentType:"buy"}},{$group:{_id:"$coinname",total:{$sum:"$quantity"}}},{$match:{_id:coin}}])
         let sold = await PaymentModel.aggregate([{$match:{userID:userID,paymentType:"sell"}},{$group:{_id:"$coinname",total:{$sum:"$quantity"}}},{$match:{_id:coin}}])
-        console.log(bought[0].total,sold[0].total);
-        let available = bought[0].total-sold[0].total
+        // console.log(bought[0].total,sold[0].total);
+        let available = (bought.length>0?bought[0].total:0)-sold.length>0?sold[0].total:0
         res.status(200).json({available})
     } catch (error) {
+        console.log(error)
         res.status(400).json({Error:error})
     }
 })

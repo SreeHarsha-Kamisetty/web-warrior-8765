@@ -110,3 +110,5 @@ prof_btn.addEventListener('click', () => {
     profile.show();
     console.log('click');
 });
+
+//image upload js

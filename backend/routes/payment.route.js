@@ -1,6 +1,7 @@
 const { PaymentModel } = require("../models/payment.model");
 const express = require("express");
-const {auth} = require("../middleware/auth.middleware")
+const {auth} = require("../middleware/auth.middleware");
+const { UserModel } = require("../models/user.models");
 
 const paymentRouter = express.Router();
 
@@ -13,7 +14,7 @@ const paymentRouter = express.Router();
 
 paymentRouter.get("/",async(req,res)=>{
     try {
-        let {userID} = {userID:"65a87073f08eb630cb7866f3"} || req.body
+        let {userID} = req.body || {userID:"65a87073f08eb630cb7866f3"} 
         // console.log(userID)
         let query = [{$match:{userID}}];
         // console.log(req.query.q)
@@ -59,8 +60,26 @@ paymentRouter.get("/",async(req,res)=>{
 paymentRouter.post("/new",async(req,res)=>{
     try {
         let payload = req.body;
+        let total = +payload.price * +payload.quantity
+        console.log(total);
         let new_payment = new PaymentModel(payload);
         await new_payment.save();
+        let user = await UserModel.findOne({_id:req.body.userID});
+        let new_balance,new_investments;
+        if(payload.paymentType=="buy"){
+            new_balance = user.balance-total
+            new_investments = user.investements+total
+        }
+        else{
+            new_balance = user.balance+total
+            new_investments = user.investements-total
+        }
+        let updated_user = {
+            balance:new_balance,
+            investements:new_investments
+        }
+        console.log(updated_user);
+        await UserModel.findByIdAndUpdate({_id:req.body.userID},updated_user)
         res.status(200).json({Message:"Payment Successful",Details:new_payment});
 
     } catch (error) {
@@ -89,8 +108,20 @@ paymentRouter.delete("/delete/:id",async(req,res)=>{
         res.status(400).json({Error:error});
     }
 })
-
-
+ // 
+paymentRouter.get("/available/:coin",async(req,res)=>{
+    let {userID} = req.body;
+    let coin = req.params.coin
+    try {
+        let bought = await PaymentModel.aggregate([{$match:{userID:userID,paymentType:"buy"}},{$group:{_id:"$coinname",total:{$sum:"$quantity"}}},{$match:{_id:coin}}])
+        let sold = await PaymentModel.aggregate([{$match:{userID:userID,paymentType:"sell"}},{$group:{_id:"$coinname",total:{$sum:"$quantity"}}},{$match:{_id:coin}}])
+        console.log(bought[0].total,sold[0].total);
+        let available = bought[0].total-sold[0].total
+        res.status(200).json({available})
+    } catch (error) {
+        res.status(400).json({Error:error})
+    }
+})
 
 
 

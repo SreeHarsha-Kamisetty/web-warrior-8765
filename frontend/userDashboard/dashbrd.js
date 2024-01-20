@@ -46,16 +46,46 @@ function createColumn(item){
 
 
 
+// fetching all user details based on the userID stored in localStorage
+let id = localStorage.getItem("id");
+async function getUserDetails(id){
+    try {
+        let res = await fetch(`http://localhost:8080/user/${id}`)
+        let data = await res.json();
+        console.log(data);
+        let balance = document.getElementById("user-balance");
+        balance.innerText = `$${data.user.balance.toLocaleString("en-US")}`;
+        
+        let investements = document.getElementById("user-investments");
+        investements.innerText = `$${data.user.investements.toLocaleString("en-US")}`;
 
+        let username = document.getElementById("user-name");
+        username.innerText = data.user.name;
 
+        let email = document.getElementById("user-email")
+        email.innerText = data.user.email
+
+        let username_2 = document.getElementById("user-name-2");
+        username_2.value = data.user.name
+
+        let useremail_2 = document.getElementById("user-email-2");
+        useremail_2.value = data.user.email
+
+        let usermobile = document.getElementById("user-mobile");
+        usermobile.value = data.user.mobile
+    } catch (error) {
+        console.log(error);
+    }
+}
+getUserDetails(id);
 
 // fetch request for payment history table
-function fetchData(page) {
-    fetch(`http://localhost:8080/payments/?page=${page || 1}&limit=5`)
+function fetchData(page,id) {
+    fetch(`http://localhost:8080/payments/${id}?page=${page || 1}&limit=5`)
         .then((res) => res.json())
         .then((data) => {
             const total = Number(data.total);
-            pagination(Math.ceil(total / 5));
+            pagination(Math.ceil(total / 5),id);
             console.log(data);
             appenRow(data.Data);
 
@@ -70,8 +100,8 @@ function showModal() {
 }
 
 const pagination_btn=document.getElementById('btn-foot');
-fetchData();
-function pagination(total){
+fetchData(1,id);
+function pagination(total,id){
    pagination_btn.innerHTML=""; 
    for( let i=1;i<=total;i++){
     let button=document.createElement('button');
@@ -80,7 +110,7 @@ function pagination(total){
     pagination_btn.append(button) 
 
     button.addEventListener('click',()=>{
-       fetchData(i);
+       fetchData(i,id);
     })
    }
     
@@ -92,7 +122,7 @@ const btn=document.getElementById('search');
 btn.addEventListener('click',()=>{
     var name=document.getElementById('search-input')
     
-    fetch(`http://localhost:8080/payments/?q=${name.value}`).then((res)=>res.json()).then((data)=>{
+    fetch(`http://localhost:8080/payments/${id}?q=${name.value}`).then((res)=>res.json()).then((data)=>{
         console.log(data.Data)
         appenRow(data.Data);
          // Call and show the modal here
@@ -148,17 +178,11 @@ upload_img_form.addEventListener("submit",(e)=>{
 })
 
 // load image on page load
-async function loadImage(){
-    // let profile = localStorage.getItem("image");
-    // if(profile!==null){
-    //     let test_img = document.getElementById("test-img")
-    //     test_img.src = profile
-    //     let profile_pic = document.getElementById("profile-pic")
-    //     profile_pic.src = profile
-    // }
+async function loadImage(id){
     try {
-        let res = await fetch("http://localhost:8080/user/profile/65aa71a20bcf82bb233d01fc")
+        let res = await fetch(`http://localhost:8080/user/profile/${id}`)
         let data = await res.json();
+        console.log(data);
         let profile = data.image
         let test_img = document.getElementById("test-img")
             test_img.src = profile
@@ -169,4 +193,4 @@ async function loadImage(){
     }
   
 }
-loadImage();
+loadImage(id);

@@ -51,7 +51,7 @@ function coinMaker(item) {
     const nameTd=document.createElement('td');
     const name = document.createElement('h1');
     name.className = "coin-name";
-    name.textContent = item.id.charAt(0).toUpperCase() + item.id.slice(1);;
+    name.textContent = item.id.charAt(0).toUpperCase() + item.id.slice(1);
     nameTd.appendChild(name)
 
     const price=document.createElement('td');

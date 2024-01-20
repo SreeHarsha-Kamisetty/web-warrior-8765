@@ -211,7 +211,7 @@
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#edit-profile-image-modal">Edit Profile Image</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-primary" >Save changes</button>
                   
               </div>
           </div>
@@ -226,16 +226,21 @@
                   <h4 class="modal-title" id="editProfileImageModalLabel">Edit Profile Image</h4>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
+              <form action="" enctype="multipart/form-data" id="upload-img-form">
               <div class="modal-body">
+                
                   <div class="mb-3">
                       <label for="new-profile-image" class="form-label">Select New Profile Image</label>
-                      <input type="file" class="form-control" id="new-profile-image">
+                      <input type="file" class="form-control" id="new-profile-image" name="image">
                   </div>
+               
               </div>
+
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Submit</button>
+                  <button type="button" class="btn btn-primary" id="save-img">Submit</button>
               </div>
+            </form>
           </div>
       </div>
   </div>

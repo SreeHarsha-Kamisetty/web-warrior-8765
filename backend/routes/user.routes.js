@@ -134,6 +134,7 @@ userRouter.get("/profile/:userID",async(req,res)=>{
     }
 })
 
+// Route to add funds -- to be used on purchase coins page during payment 
 userRouter.patch("/addfunds/:userID",async(req,res)=>{
     try {
         let {userID} = req.params;
@@ -146,6 +147,21 @@ userRouter.patch("/addfunds/:userID",async(req,res)=>{
         res.status(200).json({Message:"Balance updated"})
     } catch (error) {
         console.log(error)
+        res.status(400).json({Error:error});
+    }
+})
+
+userRouter.get("/:userID",async(req,res)=>{
+    try {
+        let id = req.params.userID
+        let user = await UserModel.findOne({_id:id});
+        if(user){
+            res.status(200).json({user});
+        }
+        else{
+            res.status(404).json({Message:"User not found"})
+        }
+    } catch (error) {
         res.status(400).json({Error:error});
     }
 })

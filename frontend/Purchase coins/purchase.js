@@ -154,13 +154,18 @@ function loadChart(coinname){
 }
 loadChart("dogecoin")
 
+// purchase form Implementation
+
+const purchase_coin_name = document.getElementById('coinName');
+const purchase_coin_price = document.getElementById('coinPrice');
+
 function getPurchaseForm() {
   purchase_coin_name.innerHTML = "";
   purchase_coin_price.innerHTML = "";
 
   const stored_items = JSON.parse(localStorage.getItem('local_items'));
-  purchase_coin_name.textContent = stored_items.coin_name;
-  purchase_coin_price.textContent = stored_items.price;
+  purchase_coin_name.textContent = stored_items.coin_name.charAt(0).toUpperCase() + stored_items.coin_name.slice(1);
+  purchase_coin_price.textContent = stored_items.price
 }
 
 getPurchaseForm();

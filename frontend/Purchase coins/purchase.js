@@ -1,6 +1,8 @@
 var prices;
 let date = [];
 let currentDate = new Date();
+const purchase_coin_name = document.getElementById('coinName');
+const purchase_coin_price = document.getElementById('coinPrice');
 for (let i = 0; i < 15; i++) {
   const d = new Date(currentDate);
   d.setDate(currentDate.getDate() - i);
@@ -150,3 +152,17 @@ fetch(
     const myChart_2 = new Chart(ctx2, config_2);
   })
   .catch((error) => console.log(error));
+
+  // purchase form data manipulation
+
+  function getPurchaseForm(){
+    purchase_coin_name.innerHTML = "";
+    purchase_coin_price.innerHTML = "";
+   
+    const stored_items = JSON.parse(localStorage.getItem('local_items'));
+    purchase_coin_name.textContent = stored_items.coin_name;
+    purchase_coin_price.textContent = stored_items.price;
+  }
+
+  getPurchaseForm();
+

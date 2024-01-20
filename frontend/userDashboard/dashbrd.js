@@ -112,3 +112,61 @@ prof_btn.addEventListener('click', () => {
 });
 
 //image upload js
+let upload_img_form = document.getElementById("upload-img-form");
+let save_img = document.getElementById("save-img");
+save_img.addEventListener("click",async()=>{
+    let new_image = document.getElementById("new-profile-image")
+    let image = new_image.files[0];
+    let data = new FormData();
+    data.append('image',image)
+    
+    try{
+        let res = await fetch("http://localhost:8080/user/profile/65aa71a20bcf82bb233d01fc",{
+            method:"PATCH",
+            headers:{
+                "enctype":"multipart/form-data"
+            },
+            body:data
+        })
+        let new_data = await res.json();
+        console.log(new_data.updated);
+        let test_img = document.getElementById("test-img")
+        test_img.src = new_data.updated
+        let profile_pic = document.getElementById("profile-pic")
+        profile_pic.src = new_data.updated
+        // localStorage.removeItem("image");
+        // localStorage.setItem("image",new_data.updated);
+        window.location.href="./dashboard.html"
+    }
+    catch(error){
+        console.log(error)
+    }
+})
+upload_img_form.addEventListener("submit",(e)=>{
+    e.preventDefault();
+    
+})
+
+// load image on page load
+async function loadImage(){
+    // let profile = localStorage.getItem("image");
+    // if(profile!==null){
+    //     let test_img = document.getElementById("test-img")
+    //     test_img.src = profile
+    //     let profile_pic = document.getElementById("profile-pic")
+    //     profile_pic.src = profile
+    // }
+    try {
+        let res = await fetch("http://localhost:8080/user/profile/65aa71a20bcf82bb233d01fc")
+        let data = await res.json();
+        let profile = data.image
+        let test_img = document.getElementById("test-img")
+            test_img.src = profile
+            let profile_pic = document.getElementById("profile-pic")
+            profile_pic.src = profile
+    } catch (error) {
+        console.log(error);
+    }
+  
+}
+loadImage();

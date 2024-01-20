@@ -14,7 +14,7 @@ const paymentRouter = express.Router();
 
 paymentRouter.get("/",async(req,res)=>{
     try {
-        let {userID} = req.body || {userID:"65a87073f08eb630cb7866f3"} 
+        let {userID} =  {userID:"65a87073f08eb630cb7866f3"} ||  req.body 
         // console.log(userID)
         let query = [{$match:{userID}}];
         // console.log(req.query.q)

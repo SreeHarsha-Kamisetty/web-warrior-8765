@@ -51,7 +51,7 @@ function coinMaker(item) {
     const nameTd=document.createElement('td');
     const name = document.createElement('h1');
     name.className = "coin-name";
-    name.textContent = item.id;
+    name.textContent = item.id.charAt(0).toUpperCase() + item.id.slice(1);;
     nameTd.appendChild(name)
 
     const price=document.createElement('td');
@@ -77,6 +77,11 @@ function coinMaker(item) {
     button.className = "trade-btn";
     button.innerHTML = "TRADE";
     btn.appendChild(button);
+    button.addEventListener('click',()=>{
+        const local_items = {'coin_name' : item.id, 'price' : item.current_price};
+        localStorage.setItem('local_items',JSON.stringify(local_items));
+        window.location.href = 'http://127.0.0.1:5502/frontend/Purchase%20coins/purchase.html';
+    })
 
     // Set button color based on market price change
     if (parseFloat(item.price_change_percentage_24h) < 0) {
@@ -147,3 +152,4 @@ selected_input.addEventListener('input',()=>{
 })
 
 
+// 

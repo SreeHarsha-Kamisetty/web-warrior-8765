@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+  <section class="main">
   <div class="sidebar">
     <div class="logo"></div>
     <ul class="menu">
@@ -27,22 +28,16 @@
           <span>Dashboard</span>
         </a>
       </li>
-      <li>
-        <a href="#">
-          <i class="fas fa-user"></i>
-          <span>Profile</span>
+      <li >
+        <a href="#" id="prof-btn">
+          <i class="fas fa-user" ></i>
+          <span >Profile</span>
         </a>
       </li>
       <li>
-        <a href="#">
-          <i class="fas fa-chart-bar"></i>
-          <span>Statistics</span>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fas fa-briefcase"></i>
-          <span>Carriers</span>
+        <a href="../pricing/pricing.html">
+          <i class="fa-brands fa-bitcoin"></i>
+          <span>Cryptocurrencies</span>
         </a>
       </li>
       <li>
@@ -101,7 +96,7 @@
               <p>Finance history Table has been organised according to your search.<i class="fa-regular fa-face-smile-beam"></i></p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
+              <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button> -->
               <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
             </div>
           </div>
@@ -116,23 +111,13 @@
     <div class="card-container">
       <h3 class="main--title">Today's Data</h3>
       <div class="card--wrapper">
-        <div class="payment--card light-red">
-          <div class="card--header">
-            <div class="amount">
-             <span class="title">Payment Amount</span>
-              <span class="amount--value">$500</span>
-            </div>
-            <i class="fas fa-dollar-sign icon"></i>
-          </div>
-          <span class="card-details">**** **** **** 3456</span>
-        </div>
-        <div class="payment--card light-purple">
+        <div class="payment--card light-blue">
           <div class="card--header">
             <div class="amount">
              <span class="title">Payment order</span>
               <span class="amount--value">$500</span>
             </div>
-            <i class="fas fa-list icon dark-purple"></i>
+            <i class="fas fa-list icon dark-blue"></i>
           </div>
           <span class="card-details">**** **** **** 3456</span>
         </div>
@@ -161,7 +146,7 @@
     </div>
 
     <div class="tabular--wrapper">
-      <h3 class="main--title">Finance Data</h3>
+      <h3 class="main--title">Payment History</h3>
        <div class="table-container">
         <table>
           <thead>
@@ -188,6 +173,79 @@
        </div>
     </div>
   </div>
+</section>
+<div class="profile">
+  <!-- Profile Modal -->
+  <div class="modal fade" id="profile-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="profile-title">Profile</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                  <div class="row">
+                      <div class="col-sm border-right">
+                          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                              <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                              <span class="font-weight-bold">Edogaru</span>
+                              <span class="text-black-50">edogaru@mail.com.my</span>
+                              <span> </span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row mt-2">
+                      <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
+                  </div>
+                  <div class="row mt-3">
+                      <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
+                      <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
+                      <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
+                      <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
+                  </div>
+                  <div class="row mt-3">
+                      <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
+                      <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#edit-profile-image-modal">Edit Profile Image</button>
+                  <button type="button" class="btn btn-primary" >Save changes</button>
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Edit Profile Image Modal -->
+  <div class="modal fade" id="edit-profile-image-modal" tabindex="-1" aria-labelledby="editProfileImageModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="editProfileImageModalLabel">Edit Profile Image</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form action="" enctype="multipart/form-data" id="upload-img-form">
+              <div class="modal-body">
+                
+                  <div class="mb-3">
+                      <label for="new-profile-image" class="form-label">Select New Profile Image</label>
+                      <input type="file" class="form-control" id="new-profile-image" name="image">
+                  </div>
+               
+              </div>
+
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="save-img">Submit</button>
+              </div>
+            </form>
+          </div>
+      </div>
+  </div>
+</div>
+
   <!-- dashboard js -->
 <script src="./dashbrd.js"></script>
 <!-- bootstrap -->

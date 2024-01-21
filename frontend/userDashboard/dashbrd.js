@@ -104,21 +104,14 @@ async function getUserDetails(id){
 getUserDetails(id);
 
 // fetch request for payment history table
-function fetchData(page, id) {
-    fetch(`https://coinsquare.onrender.com/payments/${id}?page=${page || 1}&limit=5`)
+function fetchData(page, id, sortBy = 'date', sortOrder = 'desc'){
+    fetch(`https://coinsquare.onrender.com/payments/${id}?page=${page || 1}&limit=5&sort=${sortBy}&order=${sortOrder}`)
       .then((res) => res.json())
       .then((data) => {
-        const unsortedData = data.Data;
-  
-        // Convert date strings to Date objects before sorting
-        const compareDates = (a, b) => new Date(b.date) - new Date(a.date);
-  
-        // Sort the data array by date
-        const sortedData = unsortedData.sort(compareDates);
-  
+        
         // Update UI or perform other actions with the sorted data
-        console.log(sortedData);
-        appenRow(sortedData);
+        console.log(data.Data);
+        appenRow(data.Data);
   
         // Add pagination logic if needed
         const total = Number(data.total);
@@ -138,7 +131,7 @@ function showModal() {
 }
 
 const pagination_btn=document.getElementById('btn-foot');
-fetchData(1,id);
+fetchData(1, id, 'date', 'desc');
 function pagination(total,id){
    pagination_btn.innerHTML=""; 
    for( let i=1;i<=total;i++){

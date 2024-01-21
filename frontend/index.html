@@ -88,22 +88,22 @@
             </li>
 
             <li class="navbar-item">
-              <a href="#" class="navbar-link" data-nav-link id="utdash"
+              <a href="./userDashboard/dashboard.html" class="navbar-link" data-nav-link id="utdash"
                 >DashBoard</a
               >
             </li>
 
-            <!-- <li class="navbar-item">
-              <a href="#" class="navbar-link" data-nav-link>Sell Crypto</a>
-            </li> -->
+            <li class="navbar-item">
+              <a href="./about.html" class="navbar-link" data-nav-link>About Us</a>
+            </li>
 
             <!-- <li class="navbar-item">
               <a href="#" class="navbar-link" data-nav-link>Blog</a>
             </li> -->
 
-            <li class="navbar-item">
+            <!-- <li class="navbar-item">
               <a href="" class="navbar-link" data-nav-link id="uname"></a>
-            </li>
+            </li> -->
           </ul>
         </nav>
 
@@ -1221,7 +1221,7 @@
       }
     });
     if (localStorage.getItem("name")) {
-      uname.innerText = `Hi ${localStorage.getItem("name")}`;
+      // uname.innerText = `Hi ${localStorage.getItem("name")}`;
       btnlogin.innerText = "";
       btnlogin.innerText = "Logout";
       btnlogin.addEventListener("click", (e) => {

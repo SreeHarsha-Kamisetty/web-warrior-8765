@@ -73,19 +73,33 @@
                 </div>
             </div>
             <div class="input_box">
-                <input type="number" placeholder="Enter Amount" required class="name">
+                <input type="number" placeholder="Enter Amount" required class="name" id="amt">
                 <i class="fa fa-money icon" aria-hidden="true"></i>
             </div>
             <!--Payment Details End-->
 
             <div class="input_group">
                 <div class="input_box">
-                    <button type="submit">PAY NOW</button>
+                    <button type="submit" id="pay-btn">PAY NOW</button>
                 </div>
             </div>
 
         </form>
     </div>
+    <script>
+      const payBtn=document.getElementById('pay-btn');
+      payBtn.addEventListener('click',()=>{
+        const amt= document.getElementById('amt');
+        fetch(`http://localhost:8080/user/addfunds/${localStorage.getItem('id')}`,{
+            method:"PATCH",
+            body:JSON.stringify({balance:Number(amt.value)})
+        })
+        .then(res=>res.json())
+        .then((data)=>{
+          window.location.href='./Purchase coins/purchase.html'  
+        }).catch(err=>console.log(err))
+      })
+    </script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>

@@ -59,7 +59,7 @@
         </a>
       </li>
       <li class="logout">
-        <a href="#">
+        <a href="#" id="logout-btn">
           <i class="fas fa-sign-out-alt"></i>
           <span>Logout</span>
         </a>
@@ -70,8 +70,8 @@
   <div class="main--content">
     <div class="header--wrapper">
       <div class="header--title">
-        <span>Primary</span>
-        <h2>Dashboard</h2>
+        <span>Hello,</span>
+        <h2 id="dashbrd-name"></h2>
       </div>
       <div class="user--info">
        
@@ -81,9 +81,7 @@
             <i class="fa-solid fa-search"   id="search"></i>
           <input type="search" placeholder="Search" id="search-input"/>
         </div>
-        <div class="dropdown" id="myDropdown">
-          
-      </div>
+       
       <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -93,7 +91,7 @@
             </div>
             <div class="modal-body">
               <!-- Your modal content goes here -->
-              <p>Finance history Table has been organised according to your search.<i class="fa-regular fa-face-smile-beam"></i></p>
+              <p>Finance history Table has been organised according to your search.</p>
             </div>
             <div class="modal-footer">
               <!-- <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button> -->
@@ -104,12 +102,12 @@
       </div>
       
       
-        <img src="https://www.shutterstock.com/image-photo/studio-portrait-happy-successful-confident-260nw-2123908883.jpg" alt="img" id="profile-pic">
+        <img src="#" alt="img" id="profile-pic">
       </div>
       
     </div>
     <div class="card-container">
-      <h3 class="main--title">Today's Data</h3>
+      <h3 class="main--title">Account Information</h3>
       <div class="card--wrapper">
         <div class="payment--card light-blue">
           <div class="card--header">
@@ -117,9 +115,9 @@
              <span class="title">Balance</span>
               <span class="amount--value" id="user-balance">$500</span>
             </div>
-            <i class="fas fa-list icon dark-blue"></i>
+            <i class="fas fa-wallet icon dark-blue"></i>
           </div>
-          <span class="card-details">**** **** **** 3456</span>
+          
         </div>
       
         <div class="payment--card light-green">
@@ -128,20 +126,10 @@
              <span class="title">Investments</span>
               <span class="amount--value" id="user-investments">$500</span>
             </div>
-            <i class="fas fa-users icon dark-green"></i>
+            <i class="fas fa-hand-holding-usd icon dark-green"></i>
           </div>
-          <span class="card-details">**** **** **** 3456</span>
         </div>
-        <div class="payment--card light-blue">
-          <div class="card--header">
-            <div class="amount">
-             <span class="title">Payment Amount</span>
-              <span class="amount--value">$500</span>
-            </div>
-            <i class="fa-solid fa-check icon dark-blue"></i>
-          </div>
-          <span class="card-details">**** **** **** 3456</span>
-        </div>
+       
       </div>
     </div>
 
@@ -200,18 +188,13 @@
                   <div class="row mt-3">
                       <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value="" id="user-mobile"></div>
                       <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value="" id="user-email-2"></div>
-                      <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div>
-                      <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="enter address line 1" value=""></div>
-                  </div>
-                  <div class="row mt-3">
-                      <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                      <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
-                  </div>
+                     </div>
+                 
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#edit-profile-image-modal">Edit Profile Image</button>
-                  <button type="button" class="btn btn-primary" >Save changes</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
                   
               </div>
           </div>

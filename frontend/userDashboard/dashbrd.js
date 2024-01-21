@@ -8,8 +8,26 @@ function appenRow(data){
 
 function createColumn(item){
     const row=document.createElement('tr');
+
+  
+   
+    const itmDate=new Date(item.date);
+    // Extract date components
+    const year = itmDate.getFullYear();
+    const month = itmDate.getMonth() + 1; // Month is 0-indexed, so we add 1
+    const day = itmDate.getDate();
+    
+    // Extract time components
+    const hours = itmDate.getUTCHours();
+    const minutes = itmDate.getUTCMinutes();
+    const seconds =itmDate.getUTCSeconds();
+    
+    // Create formatted strings
+    const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+    const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+ 
     const date=document.createElement('td');
-    date.textContent=(item.date||'01.01.2001');
+    date.textContent=(`${formattedDate} (${formattedTime})`||'01.01.2001');
     row.appendChild(date) 
     
     const imgTd=document.createElement('td');
@@ -86,18 +104,25 @@ async function getUserDetails(id){
 getUserDetails(id);
 
 // fetch request for payment history table
-function fetchData(page,id) {
-    fetch(`https://coinsquare.onrender.com/payments/${id}?page=${page || 1}&limit=5`)
-        .then((res) => res.json())
-        .then((data) => {
-            const total = Number(data.total);
-            pagination(Math.ceil(total / 5),id);
-            console.log(data);
-            appenRow(data.Data);
-
-           
-        });
-}
+function fetchData(page, id, sortBy = 'date', sortOrder = 'desc'){
+    fetch(`https://coinsquare.onrender.com/payments/${id}?page=${page || 1}&limit=5&sort=${sortBy}&order=${sortOrder}`)
+      .then((res) => res.json())
+      .then((data) => {
+        
+        // Update UI or perform other actions with the sorted data
+        console.log(data.Data);
+        appenRow(data.Data);
+  
+        // Add pagination logic if needed
+        const total = Number(data.total);
+        pagination(Math.ceil(total / 5), id);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }
+  
+  
 function showModal() {
     // Assuming your modal has an ID of "myModal"
     const id=document.getElementById('myModal')
@@ -106,7 +131,7 @@ function showModal() {
 }
 
 const pagination_btn=document.getElementById('btn-foot');
-fetchData(1,id);
+fetchData(1, id, 'date', 'desc');
 function pagination(total,id){
    pagination_btn.innerHTML=""; 
    for( let i=1;i<=total;i++){
@@ -179,8 +204,9 @@ save_img.addEventListener("click",async()=>{
     }
 })
 upload_img_form.addEventListener("submit",(e)=>{
+    const profile = new bootstrap.Modal(document.getElementById('profile-model'));
     e.preventDefault();
-    
+    profile.show(); 
 })
 
 // load image on page load
@@ -238,26 +264,26 @@ noti_btn.addEventListener('click',()=>{
 // async function fetchNotifications(){
 
 // } 
-function notification_card(data){
-    const card_div = document.createElement('div');
-    card_div.className="unread";
+// function notification_card(data){
+//     const card_div = document.createElement('div');
+//     card_div.className="unread";
 
-    const img= document.createElement('img');
-    img.className='noti-img';
-    img.src=data.image;
-    img.alt=data.coinname;
+//     const img= document.createElement('img');
+//     img.className='noti-img';
+//     img.src=data.image;
+//     img.alt=data.coinname;
 
-    card_div.appendChild(img);
+//     card_div.appendChild(img);
 
-    const noti_body=document.createElement('div');
-    noti_body.textContent=`${data.coinname}'s Rate is Changing to ${data.price_change_percentage_24h}%`
-    noti_body.className='noti-body';
+//     const noti_body=document.createElement('div');
+//     noti_body.textContent=`${data.coinname}'s Rate is Changing to ${data.price_change_percentage_24h}%`
+//     noti_body.className='noti-body';
 
-    card_div.appendChild(noti_body);
+//     card_div.appendChild(noti_body);
 
-    return card_div;
+//     return card_div;
 
-}
+// }
 
 
 // function for updating the user profile
@@ -296,9 +322,26 @@ async function updateUser(userId) {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const toastElement = document.getElementById('toast');
+    const toast = new bootstrap.Toast(toastElement);
+    toast.show();
+  });
+  
+
 const prof_update=document.getElementById('prof-chg-submit');
-prof_update.addEventListener('click',(e)=>{
-  e.preventDefault();
-  updateUser(id);
-  alert("Profile is being Updated")
-})
+
+const prof_submit = prof_update.addEventListener('click', (e) => {
+    // Prevent the default form submission
+    e.preventDefault();
+  
+    // Update user (assuming id is defined somewhere)
+    updateUser(id);
+  
+    // Create and show the Bootstrap Toast
+    // var myToastEl = document.querySelector('.toast')
+    // var myToast = bootstrap.Toast.getOrCreateInstance(myToastEl)
+    // myToast.show()
+    alert("Profile is being updated")
+  });
+  

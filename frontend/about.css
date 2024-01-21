@@ -147,11 +147,17 @@
     background-color: #1b1b1b;
     color: #fff;
     padding: 30px 0;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between; */
 }
 
 .custom-container {
+    /* display: flex;
+    justify-content: space-between; */
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .custom-footer-top {

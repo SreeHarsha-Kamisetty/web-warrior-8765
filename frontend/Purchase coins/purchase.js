@@ -152,7 +152,7 @@ function loadChart(coinname){
     })
     .catch((error) => console.log(error));
 }
-loadChart("dogecoin")
+loadChart(JSON.parse(localStorage.getItem("local_items")).coin_name)
 
 // purchase form Implementation
 
@@ -185,9 +185,11 @@ function getPurchaseForm() {
 
 getPurchaseForm();
 
-let coinname = localStorage.getItem('local_items').coin_name;
+let coinname = JSON.parse(localStorage.getItem('local_items')).coin_name;
+console.log(coinname)
 let id = localStorage.getItem("id");
 
+// getting user available coins
 async function getCoinData(coinname,id){
   try {
       let res = await fetch(`http://localhost:8080/payments/available/${id}/${coinname}`)
@@ -201,7 +203,94 @@ async function getCoinData(coinname,id){
 }
 getCoinData(coinname,id);
 
+// redirecting to payment page
 const add_funds_btn=document.getElementById('addFunds');
 add_funds_btn.addEventListener('click',()=>{
   window.location.href='../payment.html';
+})
+
+//function to get user balance
+
+async function getAvailableBalance(id){
+  try {
+      let res = await fetch(`http://localhost:8080/user/${id}`)
+      let data = await res.json();
+      // console.log(data.user.balance)
+      let balance = document.getElementById("availableBalance")
+      balance.innerText = data.user.balance
+  } catch (error) {
+   console.log(error)   
+  }
+
+}
+getAvailableBalance(id);
+
+// logic for buy and sell 
+
+let buyBtn = document.getElementById("buyButton");
+buyBtn.addEventListener("click",async(e)=>{
+  e.preventDefault();
+    let quantity = document.getElementById("quantity")
+    let details = JSON.parse(localStorage.getItem("local_items"));
+    let id = localStorage.getItem("id");
+    // console.log(id);
+    let payload = {
+      "coinname":details.coin_name,
+      "image":details.coin_image,
+      "price":details.price,
+      "price_change_percentage_24h":details.change,
+      "userID":id,
+      "paymentType":"buy",
+      "quantity":Number(quantity.value),
+      "marketcap":details.market_price
+    }
+    // console.log(payload);
+    try {
+      let res = await fetch(`http://localhost:8080/payments/new`,{
+          method:"POST",
+          headers:{
+            "Content-type":"application/json"
+          },
+          body:JSON.stringify(payload)
+      })
+      let data = await res.json()
+      // console.log(data)
+      window.location.href="../userDashboard/dashboard.html"
+  } catch (error) {
+      console.log(error);
+  }
+ 
+})
+let sellBtn = document.getElementById("sellButton");
+sellBtn.addEventListener("click",async(e)=>{
+    e.preventDefault()
+    let quantity = document.getElementById("quantity")
+    let details = JSON.parse(localStorage.getItem("local_items"));
+    let id = localStorage.getItem("id");
+    // console.log(id);
+    let payload = {
+      "coinname":details.coin_name,
+      "image":details.coin_image,
+      "price":details.price,
+      "price_change_percentage_24h":details.change,
+      "userID":id,
+      "paymentType":"sell",
+      "quantity":Number(quantity.value),
+      "marketcap":details.market_price
+    }
+    // console.log(payload);
+    try {
+      let res = await fetch(`http://localhost:8080/payments/new`,{
+          method:"POST",
+          headers:{
+            "Content-type":"application/json"
+          },
+          body:JSON.stringify(payload)
+      })
+      let data = await res.json()
+      // console.log(data)
+      window.location.href="../userDashboard/dashboard.html"
+  } catch (error) {
+      console.log(error);
+  }
 })

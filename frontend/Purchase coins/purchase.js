@@ -200,3 +200,8 @@ async function getCoinData(coinname,id){
   }
 }
 getCoinData(coinname,id);
+
+const add_funds_btn=document.getElementById('addFunds');
+add_funds_btn.addEventListener('click',()=>{
+  window.location.href='../payment.html';
+})

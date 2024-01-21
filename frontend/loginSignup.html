@@ -109,7 +109,8 @@
           logged.textContent = "Log in Successful";
           localStorage.setItem("token", data.access_token);
           localStorage.setItem("id", data.user._id);
-          localStorage.setItem('money', data.user.balance);
+
+          localStorage.setItem("money", data.user.balance);
           if (data.user.email) {
             localStorage.setItem("email", JSON.stringify(data.user.email));
           } else {

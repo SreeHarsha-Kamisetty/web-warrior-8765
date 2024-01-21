@@ -62,9 +62,12 @@ async function getUserDetails(id){
         let username = document.getElementById("user-name");
         username.innerText = data.user.name;
 
+        let dashbrd_name=document.getElementById('dashbrd-name');
+        dashbrd_name.textContent=data.user.name;
+
         let email = document.getElementById("user-email")
         email.innerText = data.user.email
-
+       
         let username_2 = document.getElementById("user-name-2");
         username_2.value = data.user.name
 
@@ -151,7 +154,7 @@ save_img.addEventListener("click",async()=>{
     data.append('image',image)
     
     try{
-        let res = await fetch("http://localhost:8080/user/profile/65aa71a20bcf82bb233d01fc",{
+        let res = await fetch(`http://localhost:8080/user/profile/${localStorage.getItem('id')}`,{
             method:"PATCH",
             headers:{
                 "enctype":"multipart/form-data"
@@ -194,3 +197,30 @@ async function loadImage(id){
   
 }
 loadImage(id);
+
+
+// logout fuctionalities
+const logout = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/user/logout', {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`, // Include the access token if needed
+        },
+      });
+  
+      if (response.ok) {
+        // Handle successful logout
+        console.log("Logout successful");
+        window.location.href = '../index.html';
+      } else {
+        // Handle error response
+        const data = await response.json();
+        console.error("Logout failed:", data.err);
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+  // Example button click event
+document.getElementById("logout-btn").addEventListener("click", logout);

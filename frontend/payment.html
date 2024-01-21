@@ -90,7 +90,7 @@
       const payBtn=document.getElementById('pay-btn');
       payBtn.addEventListener('click',()=>{
         const amt= document.getElementById('amt');
-        fetch(`http://localhost:8080/user/addfunds/${localStorage.getItem('id')}`,{
+        fetch(`https://coinsquare.onrender.com/user/addfunds/${localStorage.getItem('id')}`,{
             method:"PATCH",
             headers:{
                 "content-type":"application/json"

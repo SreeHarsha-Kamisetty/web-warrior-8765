@@ -192,7 +192,7 @@ let id = localStorage.getItem("id");
 // getting user available coins
 async function getCoinData(coinname,id){
   try {
-      let res = await fetch(`http://localhost:8080/payments/available/${id}/${coinname}`)
+      let res = await fetch(`https://coinsquare.onrender.com/payments/available/${id}/${coinname}`)
       let data = await res.json();
       console.log(data.available);
       let current = document.getElementById("currentQuantity")
@@ -213,7 +213,7 @@ add_funds_btn.addEventListener('click',()=>{
 
 async function getAvailableBalance(id){
   try {
-      let res = await fetch(`http://localhost:8080/user/${id}`)
+      let res = await fetch(`https://coinsquare.onrender.com/user/${id}`)
       let data = await res.json();
       // console.log(data.user.balance)
       let balance = document.getElementById("availableBalance")
@@ -246,7 +246,7 @@ buyBtn.addEventListener("click",async(e)=>{
     }
     // console.log(payload);
     try {
-      let res = await fetch(`http://localhost:8080/payments/new`,{
+      let res = await fetch(`https://coinsquare.onrender.com/payments/new`,{
           method:"POST",
           headers:{
             "Content-type":"application/json"
@@ -280,7 +280,7 @@ sellBtn.addEventListener("click",async(e)=>{
     }
     // console.log(payload);
     try {
-      let res = await fetch(`http://localhost:8080/payments/new`,{
+      let res = await fetch(`https://coinsquare.onrender.com/payments/new`,{
           method:"POST",
           headers:{
             "Content-type":"application/json"

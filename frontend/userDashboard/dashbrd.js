@@ -50,7 +50,7 @@ function createColumn(item){
 let id = localStorage.getItem("id");
 async function getUserDetails(id){
     try {
-        let res = await fetch(`http://localhost:8080/user/${id}`)
+        let res = await fetch(`https://coinsquare.onrender.com/user/${id}`)
         let data = await res.json();
         console.log(data);
         let balance = document.getElementById("user-balance");
@@ -87,7 +87,7 @@ getUserDetails(id);
 
 // fetch request for payment history table
 function fetchData(page,id) {
-    fetch(`http://localhost:8080/payments/${id}?page=${page || 1}&limit=5`)
+    fetch(`https://coinsquare.onrender.com/payments/${id}?page=${page || 1}&limit=5`)
         .then((res) => res.json())
         .then((data) => {
             const total = Number(data.total);
@@ -128,7 +128,7 @@ const btn=document.getElementById('search');
 btn.addEventListener('click',()=>{
     var name=document.getElementById('search-input')
     
-    fetch(`http://localhost:8080/payments/${id}?q=${name.value}`).then((res)=>res.json()).then((data)=>{
+    fetch(`https://coinsquare.onrender.com/payments/${id}?q=${name.value}`).then((res)=>res.json()).then((data)=>{
         console.log(data.Data)
         appenRow(data.Data);
          // Call and show the modal here
@@ -157,7 +157,7 @@ save_img.addEventListener("click",async()=>{
     data.append('image',image)
     
     try{
-        let res = await fetch(`http://localhost:8080/user/profile/${localStorage.getItem('id')}`,{
+        let res = await fetch(`https://coinsquare.onrender.com/user/profile/${localStorage.getItem('id')}`,{
             method:"PATCH",
             headers:{
                 "enctype":"multipart/form-data"
@@ -186,7 +186,7 @@ upload_img_form.addEventListener("submit",(e)=>{
 // load image on page load
 async function loadImage(id){
     try {
-        let res = await fetch(`http://localhost:8080/user/profile/${id}`)
+        let res = await fetch(`https://coinsquare.onrender.com/user/profile/${id}`)
         let data = await res.json();
         console.log(data);
         let profile = data.image
@@ -205,7 +205,7 @@ loadImage(id);
 // logout fuctionalities
 const logout = async () => {
     try {
-      const response = await fetch('http://localhost:8080/user/logout', {
+      const response = await fetch('https://coinsquare.onrender.com/user/logout', {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`, // Include the access token if needed
@@ -270,7 +270,7 @@ async function updateUser(userId) {
     const age = document.getElementById('user-age-2').value;
 
     try {
-        const response = await fetch(`http://localhost:8080/user/${userId}`, {
+        const response = await fetch(`https://coinsquare.onrender.com/user/${userId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

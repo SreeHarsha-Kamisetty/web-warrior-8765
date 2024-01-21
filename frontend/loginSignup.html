@@ -65,7 +65,7 @@
     handleRegister();
   });
   const handleRegister = () => {
-    fetch("http://localhost:8080/user/register", {
+    fetch("https://coinsquare.onrender.com/user/register", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -91,7 +91,7 @@
   });
 
   const handleLogin = () => {
-    fetch("http://localhost:8080/user/login", {
+    fetch("https://coinsquare.onrender.com/user/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

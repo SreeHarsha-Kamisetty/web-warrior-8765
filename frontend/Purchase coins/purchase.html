@@ -101,16 +101,17 @@
         <a href="#" class="btn btn-outline" id="utlogin">Login</a>
       </div>
     </header>
+    <div id="form-div">
     <form id="tradeForm">
       <h2 id="coinName">Coin Name</h2>
 
-      <div>
-        <label for="coinPrice">Price: $</label>
+      <div id="price-sec">
+        <label for="coinPrice">Price : $</label>
         <span id="coinPrice">0.00</span>
       </div>
         <!-- Section for users available coins-->
-      <div>
-        <label for="currentQuantity">Your Quantity</label>
+      <div id="quantity-sec">
+        <label for="currentQuantity">Your Quantity :</label>
         <span id="currentQuantity">0</span>
         </div>
       <!-- Input section for user quantity -->
@@ -126,7 +127,7 @@
       </div>
 
       <!-- Available balance section -->
-      <div>
+      <div id="avail-bal-sec">
         <label for="availableBalance">Available Balance: $</label>
         <span id="availableBalance">0.00</span>
       </div>
@@ -135,7 +136,7 @@
       <button type="button" id="addFunds">Add Funds</button>
 
       <!-- Total payment section -->
-      <div>
+      <div id="payment-sec">
         <label for="totalPayment">Total Payment: $</label>
         <span id="totalPayment">0.00</span>
       </div>
@@ -144,8 +145,9 @@
       <button id="buyButton" type="submit">Buy</button>
       <button id="sellButton" type="submit">Sell</button>
     </form>
+  </div>
 
-    <div style="width: 40%; margin-left: 20%; padding-top: 1%">
+    <div style="width: 40%; margin-left: 20%; padding-top: 1%; margin-top: 5%">
       <canvas
         id="myChart"
         width="100"

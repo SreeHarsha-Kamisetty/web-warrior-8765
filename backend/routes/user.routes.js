@@ -166,6 +166,44 @@ userRouter.get("/:userID",async(req,res)=>{
     }
 })
 
+// to update the user data
+userRouter.patch('/:id', async (req, res) => {
+    const userId = req.params.id;
+  
+    try {
+      // Check if the user exists
+      const user = await  UserModel.findOne({_id:userId});
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+  
+      // Update user fields
+      if (req.body.name) {
+        user.name = req.body.name;
+      }
+  
+      if (req.body.email) {
+        user.email = req.body.email;
+      }
+  
+      if (req.body.mobile) {
+        user.mobile = req.body.mobile;
+      }
+  
+      if (req.body.age) {
+        user.age = req.body.age;
+      }
+      // Save the updated user
+      await user.save();
+  
+      res.json({ message: 'User updated successfully', user });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+
+
 module.exports = {
     userRouter,
 };

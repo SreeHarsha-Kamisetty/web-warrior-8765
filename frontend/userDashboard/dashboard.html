@@ -41,15 +41,15 @@
         </a>
       </li>
       <li>
-        <a href="#">
-          <i class="fas fa-question-circle"></i>
-          <span>FAQ</span>
+        <a href="#" id="noti-btn">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notification</span>
         </a>
       </li>
       <li>
-        <a href="#">
-          <i class="fas fa-star"></i>
-          <span>Testimonials</span>
+        <a href="../about.html">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+          <span>About us</span>
         </a>
       </li>
       <li>
@@ -113,7 +113,7 @@
           <div class="card--header">
             <div class="amount">
              <span class="title">Balance</span>
-              <span class="amount--value" id="user-balance">$500</span>
+              <span class="amount--value" id="user-balance"></span>
             </div>
             <i class="fas fa-wallet icon dark-blue"></i>
           </div>
@@ -186,6 +186,8 @@
                       <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value="" id="user-name-2"></div>
                   </div>
                   <div class="row mt-3">
+                      <div class="col-md-12"><label class="labels">Age</label><input type="text" class="form-control" placeholder="Enter Age" value="" id="user-age-2"></div>
+
                       <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value="" id="user-mobile"></div>
                       <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value="" id="user-email-2"></div>
                      </div>
@@ -194,7 +196,7 @@
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#edit-profile-image-modal">Edit Profile Image</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-primary" id="prof-chg-submit">Save changes</button>
                   
               </div>
           </div>
@@ -228,7 +230,22 @@
       </div>
   </div>
 </div>
-
+<!-- Notification model -->
+<div class="modal fade" id="notification-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title" id="noti-title">Notifications</h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body" id="noti-cards"></div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary" id="mark-read">Mark All Read</button>
+    </div>
+  </div>
+</div>
+</div>
   <!-- dashboard js -->
 <script src="./dashbrd.js"></script>
 <!-- bootstrap -->

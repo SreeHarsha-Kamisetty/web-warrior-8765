@@ -75,7 +75,10 @@ async function getUserDetails(id){
         useremail_2.value = data.user.email
 
         let usermobile = document.getElementById("user-mobile");
-        usermobile.value = data.user.mobile
+        usermobile.value = data.user.mobile||"Please Enter your Contact Number"
+
+        let userage=document.getElementById("user-age-2");
+        userage.value=data.user.age||"Please Enter your age";
     } catch (error) {
         console.log(error);
     }
@@ -224,3 +227,78 @@ const logout = async () => {
   };
   // Example button click event
 document.getElementById("logout-btn").addEventListener("click", logout);
+
+//notification js
+
+const noti_btn=document.getElementById('noti-btn');
+noti_btn.addEventListener('click',()=>{
+    const notification = new bootstrap.Modal(document.getElementById('notification-model'));
+    notification.show();
+})
+// async function fetchNotifications(){
+
+// } 
+function notification_card(data){
+    const card_div = document.createElement('div');
+    card_div.className="unread";
+
+    const img= document.createElement('img');
+    img.className='noti-img';
+    img.src=data.image;
+    img.alt=data.coinname;
+
+    card_div.appendChild(img);
+
+    const noti_body=document.createElement('div');
+    noti_body.textContent=`${data.coinname}'s Rate is Changing to ${data.price_change_percentage_24h}%`
+    noti_body.className='noti-body';
+
+    card_div.appendChild(noti_body);
+
+    return card_div;
+
+}
+
+
+// function for updating the user profile
+async function updateUser(userId) {
+     
+
+    const name = document.getElementById('user-name-2').value;
+    const email = document.getElementById('user-email-2').value;
+    const mobile = document.getElementById('user-mobile').value;
+    const age = document.getElementById('user-age-2').value;
+
+    try {
+        const response = await fetch(`http://localhost:8080/user/${userId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name,
+                email,
+                mobile,
+                age,
+            }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            console.log(data.message);
+            // Optionally, you can update your UI to reflect the changes.
+        } else {
+            console.error(data.error);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+const prof_update=document.getElementById('prof-chg-submit');
+prof_update.addEventListener('click',(e)=>{
+  e.preventDefault();
+  updateUser(id);
+  alert("Profile is being Updated")
+})

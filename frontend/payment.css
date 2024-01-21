@@ -5,36 +5,41 @@
 }
 
 body {
-    /* background-color: hsl(220, 5%, 20%); */
+    background-color: rgba(0, 0, 0, 0.5) !important;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .wrapper {
-    background-color: #fff;
+    background-color: #222222;
     width: 500px;
     padding: 25px;
     margin: 25px auto 0;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+    transition: box-shadow 0.3s ease;
 }
 
-.modal-header{
-    background:rgba(0, 0, 0, 0.5) ;
+.wrapper:hover {
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.7);
+}
+
+.modal-header {
+    background: rgba(0, 0, 0, 0.5);
     color: #f1f1f1;
 }
+
 .wrapper h2 {
-    background-color: #fcfcfc;
-    color:  rgb(51,51,51);
+    background-color: #313131;
+    color: rgb(205, 205, 205);
     font-size: 24px;
     padding: 10px;
     margin-bottom: 8px;
     text-align: center;
-    border: 1px dashed  rgb(51,51,51);;
 }
 
 .wrapper h4 {
     padding-bottom: 5px;
-    color:  rgb(51,51,51);
+    color: rgb(243, 239, 239);
 }
 
 .input_group {
@@ -68,11 +73,12 @@ body {
     color: #333;
 }
 
-.input_box .name:focus, .dob:focus {
-    -webkit-box-shadow: 0 0 2px 1px  rgb(51,51,51);;
-    -moz-box-shadow: 0 0 2px 1px  rgb(51,51,51);;
-    box-shadow: 0 0 2px 1px  rgb(51,51,51);;
-    border: 1px solid  rgb(51,51,51);;
+.input_box .name:focus,
+.dob:focus {
+    -webkit-box-shadow: 0 0 2px 1px rgb(51, 51, 51);
+    -moz-box-shadow: 0 0 2px 1px rgb(51, 51, 51);
+    box-shadow: 0 0 2px 1px rgb(51, 51, 51);
+    border: 1px solid rgb(51, 51, 51);
 }
 
 .input_box .icon {
@@ -95,9 +101,9 @@ body {
 }
 
 .name:focus+.icon {
-    background-color: rgb(51,51,51);;
+    background-color: rgb(51, 51, 51);
     color: #fff;
-    border-right: 1px solid  rgb(51,51,51);;
+    border-right: 1px solid rgb(51, 51, 51);
     border: none;
     transition: 1s;
 }
@@ -139,14 +145,14 @@ body {
 }
 
 .radio:checked+label {
-    background-color: rgb(51,51,51);;
+    background-color: rgb(51, 51, 51);
     color: #fff;
     transition: 0.5s;
 }
 
 .input_box button {
     width: 100%;
-    background-color: rgb(51,51,51);
+    background-color: rgb(56, 116, 255);
     border: none;
     color: #fff;
     padding: 15px;
@@ -158,6 +164,5 @@ body {
 
 .input_box button:hover {
     cursor: pointer;
-    background-color: rgb(51,51,51);
+    background-color: rgb(46, 96, 210);
 }
-        

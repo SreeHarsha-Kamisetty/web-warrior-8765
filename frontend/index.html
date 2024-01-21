@@ -100,10 +100,10 @@
             <!-- <li class="navbar-item">
               <a href="#" class="navbar-link" data-nav-link>Blog</a>
             </li> -->
-            <!-- 
+
             <li class="navbar-item">
-              <a href="#" class="navbar-link" data-nav-link>Login</a>
-            </li> -->
+              <a href="" class="navbar-link" data-nav-link id="uname"></a>
+            </li>
           </ul>
         </nav>
 
@@ -1110,7 +1110,7 @@
             </li>
 
             <li>
-              <a href="#" class="footer-link">Bybit Learn</a>
+              <a href="#" class="footer-link">Learn</a>
             </li>
 
             <li>
@@ -1140,7 +1140,7 @@
             </li>
 
             <li>
-              <a href="#" class="footer-link">About Bybit</a>
+              <a href="#" class="footer-link">About Coin Square</a>
             </li>
 
             <li>
@@ -1217,8 +1217,21 @@
     });
 
     utdash.addEventListener("click", (e) => {
-      location.href = "loginSignup.html";
+      if (!localStorage.getItem("name")) {
+        location.href = "./loginSignup.html";
+      } else {
+        location.href = "./userDashboard/dashboard.html";
+      }
     });
+    if (localStorage.getItem("name")) {
+      uname.innerText = `Hi ${localStorage.getItem("name")}`;
+      btnlogin.innerText = "";
+      btnlogin.innerText = "Logout";
+      btnlogin.addEventListener("click", (e) => {
+        localStorage.clear();
+        ////////
+      });
+    }
 
     const createChatLi = (message, className) => {
       // Create a chat <li> element with passed message and className

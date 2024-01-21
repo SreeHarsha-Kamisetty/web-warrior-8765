@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="loginSignup.css" />
   </head>
   <body>
-    <img  id="loginImage1" src="./images/WhatsApp Image 2024-01-19 at 01.01.40.jpeg" alt="image" >
+    <img
+      id="loginImage1"
+      src="./images/WhatsApp Image 2024-01-19 at 01.01.40.jpeg"
+      alt="image"
+    />
     <div class="container">
       <input type="checkbox" id="check" />
       <div class="login form">
@@ -20,7 +24,7 @@
           <a href="forgotPassword.html">Forgot password?</a>
           <input type="button" class="button" value="Login" id="loginbtn" />
         </form>
-        <div style="color:hsl(220, 5%, 20%)" id="logged"></div>
+        <div style="color: hsl(220, 5%, 20%)" id="logged"></div>
         <div class="signup">
           <span class="signup"
             >Don't have an account?
@@ -41,7 +45,7 @@
           <!-- <input type="button" class="button" id="signbtn" value="Signup" /> -->
           <input type="button" class="button" id="signbtn" value="Signup" />
         </form>
-        <div style="color:hsl(220, 5%, 20%)" id="reg"></div>
+        <div style="color: hsl(220, 5%, 20%)" id="reg"></div>
 
         <div class="signup">
           <span class="signup"
@@ -104,16 +108,18 @@
           let logged = document.getElementById("logged");
           logged.textContent = "Log in Successful";
           localStorage.setItem("token", data.access_token);
+          localStorage.setItem("id", data.user._id);
+          localStorage.setItem('money', data.user.balance);
           if (data.user.email) {
-          localStorage.setItem('email', JSON.stringify(data.user.email));
-        } else {
-          console.error("Email not found in the user object:", data.user);
-        }
-        if (data.user.name) {
-          localStorage.setItem('name', JSON.stringify(data.user.name));
-        } else {
-          console.error("Name not found in the user object:", data.user);
-        }
+            localStorage.setItem("email", JSON.stringify(data.user.email));
+          } else {
+            console.error("Email not found in the user object:", data.user);
+          }
+          if (data.user.name) {
+            localStorage.setItem("name", JSON.stringify(data.user.name));
+          } else {
+            console.error("Name not found in the user object:", data.user);
+          }
           setTimeout(() => {
             window.location.href = "./userDashboard/dashboard.html";
           }, 0);

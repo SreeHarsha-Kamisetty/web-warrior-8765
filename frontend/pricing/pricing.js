@@ -78,9 +78,9 @@ function coinMaker(item) {
     button.innerHTML = "TRADE";
     btn.appendChild(button);
     button.addEventListener('click',()=>{
-        const local_items = {'coin_name' : item.id, 'price' : item.current_price};
+        const local_items = {'coin_name' : item.id, 'price' : item.current_price, "market-price" : item.market_cap, '24-h-change' : item.price_change_percentage_24h, 'coin-image' : item.image};
         localStorage.setItem('local_items',JSON.stringify(local_items));
-        window.location.href = 'http://127.0.0.1:5502/frontend/Purchase%20coins/purchase.html';
+        window.location.href = '../purchase coins/purchase.html';
     })
 
     // Set button color based on market price change
@@ -152,4 +152,4 @@ selected_input.addEventListener('input',()=>{
 })
 
 
-// 
+//

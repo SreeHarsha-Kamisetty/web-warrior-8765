@@ -158,11 +158,26 @@ loadChart("dogecoin")
 
 const purchase_coin_name = document.getElementById('coinName');
 const purchase_coin_price = document.getElementById('coinPrice');
+const balance = document.getElementById('availableBalance');
+const quantity_input = document.getElementById('quantity');
+const current_quantity = document.getElementById('currentQuantity');
+const buy_button = document.getElementById('buyButton');
+const sell_button = document.getElementById('sellButton');
+const total_payment = document.getElementById('totalPayment');
 
 function getPurchaseForm() {
   purchase_coin_name.innerHTML = "";
   purchase_coin_price.innerHTML = "";
+  balance.innerHTML = "";
 
+ const user_balance = localStorage.getItem('money');
+  if(user_balance == null){
+    balance.textContent = '0.00';
+  }
+  else{
+    balance.textContent = user_balance;
+  }
+  console.log(localStorage.getItem('money'));
   const stored_items = JSON.parse(localStorage.getItem('local_items'));
   purchase_coin_name.textContent = stored_items.coin_name.charAt(0).toUpperCase() + stored_items.coin_name.slice(1);
   purchase_coin_price.textContent = stored_items.price
@@ -170,6 +185,21 @@ function getPurchaseForm() {
 
 getPurchaseForm();
 
+let coinname = localStorage.getItem('local_items').coin_name;
+let id = localStorage.getItem("id");
+
+async function getCoinData(coinname,id){
+  try {
+      let res = await fetch(`http://localhost:8080/payments/available/${id}/${coinname}`)
+      let data = await res.json();
+      console.log(data.available);
+      let current = document.getElementById("currentQuantity")
+      current.innerText = data.available;
+  } catch (error) {
+      console.log(error);
+  }
+}
+getCoinData(coinname,id);
 
 const add_funds_btn=document.getElementById('addFunds');
 add_funds_btn.addEventListener('click',()=>{

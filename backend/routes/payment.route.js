@@ -118,7 +118,7 @@ paymentRouter.get("/available/:userID/:coin",async(req,res)=>{
         let bought = await PaymentModel.aggregate([{$match:{userID:userID,paymentType:"buy"}},{$group:{_id:"$coinname",total:{$sum:"$quantity"}}},{$match:{_id:coin}}])
         let sold = await PaymentModel.aggregate([{$match:{userID:userID,paymentType:"sell"}},{$group:{_id:"$coinname",total:{$sum:"$quantity"}}},{$match:{_id:coin}}])
         // console.log(bought[0].total,sold[0].total);
-        let available = (bought.length>0?bought[0].total:0)-sold.length>0?sold[0].total:0
+        let available = (bought.length>0?bought[0].total:0)-(sold.length>0?sold[0].total:0)
         res.status(200).json({available})
     } catch (error) {
         console.log(error)

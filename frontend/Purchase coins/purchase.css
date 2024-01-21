@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "Poppins",sans-serif;;
     background-color: #4e4e4e;
     color: #fff;
     margin: 0;
@@ -15,16 +17,15 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding: 30px;
-    /* padding-top: 10%; */
-    width: 350px;
-    height: 90%;
-    margin-left: 5px;
+    width: 320px;
+    height: 95%;
+    margin-left: 5%;
+    margin-top: 23%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-
 
 div {
     margin-bottom: 20px;
@@ -58,21 +59,41 @@ button {
     cursor: pointer;
 }
 
-#buyButton{
-    background-color: #066606;
+#buyButton {
+    background-color: #006100;
+    margin-bottom: 4%;
 }
 
 #sellButton {
-    background-color: #900c05; /* Red */
+    background-color: #890700; /* Red */
 }
 
 #coinPrice,
 #availableBalance,
-#totalPayment {
+#totalPayment,
+#currentQuantity {
     font-weight: bold;
     margin-left: 5px;
+    /* margin-bottom: 4%; */
 }
 
-#addFunds{
+#addFunds {
     background-color: #484848;
+    margin-bottom: 3%;
 }
+
+#price-sec{
+    display: flex;
+    margin-top: 5%;
+}
+
+#avail-bal-sec{
+    display: flex;
+    margin-top: 3%;
+}
+
+#payment-sec{
+    display: flex;
+    margin-top: 5%;
+}
+

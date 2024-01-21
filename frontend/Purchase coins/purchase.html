@@ -20,12 +20,12 @@
     
 </head>
 <body>
-
+<div id="form-div">
 <form id="tradeForm">
     <h2 id="coinName">Coin Name</h2>
 
 
-    <div>
+    <div id="price-sec">
         <label for="coinPrice">Price: $</label>
         <span id="coinPrice">0.00</span>
     </div>
@@ -37,7 +37,7 @@
     </div>
 
     <!-- Available balance section -->
-    <div>
+    <div id="avail-bal-sec">
         <label for="availableBalance">Available Balance: $</label>
         <span id="availableBalance">0.00</span>
     </div>
@@ -46,7 +46,7 @@
     <button id="addFunds" type="button">Add Funds</button>
 
     <!-- Total payment section -->
-    <div>
+    <div id="payment-sec">
         <label for="totalPayment">Total Payment: $</label>
         <span id="totalPayment">0.00</span>
     </div>
@@ -55,6 +55,7 @@
     <button id="buyButton" type="submit">Buy</button>
     <button id="sellButton" type="submit">Sell</button>
 </form>
+</div>
 <div style="width: 40%; margin-left: 20%; padding-top: 1%;">
     <canvas id="myChart" width="100" height="50" style="padding-top:1% ;"></canvas>
     <canvas id="myChart_2" width="100" height="50"></canvas>

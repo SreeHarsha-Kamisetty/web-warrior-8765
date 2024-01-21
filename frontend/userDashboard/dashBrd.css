@@ -108,6 +108,9 @@ padding: 1rem;
 .header--title{
   color:   #ebe9e9;
 }
+.header--title i{
+  color: #ebe9e9;
+}
 .user--info{
   display: flex;
   align-items: center;
@@ -154,7 +157,7 @@ padding: 4px 12px;
 .main--title{
   color:  #ebe9e9;
   padding-bottom: 10px;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .payment--card{
@@ -162,7 +165,7 @@ padding: 4px 12px;
   border-radius: 10px;
   padding: 1.2rem;
   width: 290px;
-  height: 150px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -183,7 +186,7 @@ padding: 4px 12px;
   flex-direction: column;
 }
 .title{
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 200;
 }
 .amount--value{
@@ -199,7 +202,7 @@ padding: 4px 12px;
   text-align: center;
   border-radius: 50%;
   font-size: 1.5rem;
-  background-color: red;
+
 }
 
 .card-details{

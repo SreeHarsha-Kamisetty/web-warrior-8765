@@ -110,7 +110,7 @@ paymentRouter.delete("/delete/:id",async(req,res)=>{
         res.status(400).json({Error:error});
     }
 })
- // 
+ //payment route for avilable coins in user's account 
 paymentRouter.get("/available/:userID/:coin",async(req,res)=>{
     let {userID} = req.params;
     let coin = req.params.coin

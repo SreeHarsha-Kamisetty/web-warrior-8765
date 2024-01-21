@@ -15,7 +15,6 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding: 30px;
-    /* padding-top: 10%; */
     width: 350px;
     height: 90%;
     margin-left: 5px;
@@ -24,7 +23,6 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
 }
-
 
 div {
     margin-bottom: 20px;
@@ -58,7 +56,7 @@ button {
     cursor: pointer;
 }
 
-#buyButton{
+#buyButton {
     background-color: #066606;
 }
 
@@ -68,11 +66,12 @@ button {
 
 #coinPrice,
 #availableBalance,
-#totalPayment {
+#totalPayment,
+#currentQuantity {
     font-weight: bold;
     margin-left: 5px;
 }
 
-#addFunds{
+#addFunds {
     background-color: #484848;
 }

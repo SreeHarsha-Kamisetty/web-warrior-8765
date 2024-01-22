@@ -36,7 +36,7 @@ Coinsquare is designed to offer a comprehensive cryptocurrency trading experienc
 
 ### 6. Collaborators
 
-- **Shree Harsha**: Backend development for payment details and user information.
+- **Sree Harsha**: Backend development for payment details and user information.
 - **Aditi Bhadoriya**: User dashboard creation and About Us information.
 - **Aniket Baghel**: Real-time pricing details page and functionalities.
 - **Utkarsh**: Home page and chatbot functionalities.
@@ -56,16 +56,42 @@ Coinsquare is designed to offer a comprehensive cryptocurrency trading experienc
 4. Run the server using `npm start`.
 
 ## Screenshots
+*Home Page with BOT*
+(![Screenshot (1577)](https://github.com/SreeHarsha-Kamisetty/web-warrior-8765/assets/76037392/158ff72f-e882-49f9-846f-e613ff943beb)
+)
 
-![Screenshot 1](./screenshots/screenshot1.png)
-*Caption for Screenshot 1.*
+*Login and forgot password pages*
+![Screenshot (1582)](https://github.com/SreeHarsha-Kamisetty/web-warrior-8765/assets/76037392/9e71ac10-d991-4d4e-814b-19e070fd2d68)
 
-![Screenshot 2](./screenshots/screenshot2.png)
-*Caption for Screenshot 2.*
+![Screenshot (1583)](https://github.com/SreeHarsha-Kamisetty/web-warrior-8765/assets/76037392/a16dc778-e3e7-4278-835f-badeb38f50d6)
 
-<!-- Add more screenshots as needed -->
+
+*Pricing List of Crypto Currencies*
+![Screenshot (1584)](https://github.com/SreeHarsha-Kamisetty/web-warrior-8765/assets/76037392/f93a3820-90ce-407e-8dbf-effb92130ad1)
+
+
+*Purchase page with real-time graphs*
+![Screenshot (1587)](https://github.com/SreeHarsha-Kamisetty/web-warrior-8765/assets/76037392/4b6d765c-9b0c-4d29-b0de-2f8f73dd2725)
+
+
+*Payemnt Form to add Funds*
+![Screenshot (1586)](https://github.com/SreeHarsha-Kamisetty/web-warrior-8765/assets/76037392/fbc5ebad-7773-4c8d-b6f8-f205762c78ec)
+
+*User-dash Board And functionalities*
+![Screenshot (1588)](https://github.com/SreeHarsha-Kamisetty/web-warrior-8765/assets/76037392/03236d0f-21dd-4ad4-9518-e76e0c5f10c8)
+![Screenshot (1590)](https://github.com/SreeHarsha-Kamisetty/web-warrior-8765/assets/76037392/b6e04f56-685f-4fec-b822-b2992506b87e)
+
+
+![Screenshot (1591)](https://github.com/SreeHarsha-Kamisetty/web-warrior-8765/assets/76037392/98e7c13f-f21a-47ec-bf8d-3e3b8abeb701)
+
+
+*About the CoinSquare*
+![Screenshot (1592)](https://github.com/SreeHarsha-Kamisetty/web-warrior-8765/assets/76037392/b5499041-fe86-4006-a2cc-22416d43d7e4)
+![about2](https://github.com/SreeHarsha-Kamisetty/web-warrior-8765/assets/76037392/516e1ab9-8615-42e2-8ecb-b0c66a64dcd3)
+
 
 ## Collaborate
+
 
 We welcome contributions and collaboration. Feel free to fork and submit pull requests to enhance Coinsquare's features and functionalities.
 
@@ -73,11 +99,5 @@ We welcome contributions and collaboration. Feel free to fork and submit pull re
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-## Contact
-
-For inquiries and support, please contact the development team:
-
-- Email: contact@coinsquare.com
-- Website: [https://www.coinsquare.com](https://www.coinsquare.com)
 
 

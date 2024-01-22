@@ -232,6 +232,7 @@ buyBtn.addEventListener("click",async(e)=>{
   e.preventDefault();
     let quantity = document.getElementById("quantity")
     let details = JSON.parse(localStorage.getItem("local_items"));
+    localStorage.setItem("latest",JSON.stringify({coinname:details.coin_name,price:details.price}))
     let id = localStorage.getItem("id");
     // console.log(id);
     let payload = {

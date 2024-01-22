@@ -345,3 +345,52 @@ const prof_submit = prof_update.addEventListener('click', (e) => {
     alert("Profile is being updated")
   });
   
+  // Notification 
+
+
+  let latest_purchase = JSON.parse(localStorage.getItem("latest"));
+
+  async function checkCoin(latest_purchase){
+    try {
+        let coindata=[];
+        let res = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&x_cg_demo_api_key=CG-XVgbsUJp9n4dxZmnx9iftNLW&order=market_cap_desc&per_page=250&page=1&sparkline=false&locale=en")
+        let data = await res.json();
+        coindata = [...data]
+        // console.log(coindata);
+        
+        
+        
+        coindata = coindata.filter(item => item.id==latest_purchase.coinname)
+        if(coindata.length>0){
+            if(coindata.current_price>latest_purchase.price){
+                console.log("increase")
+                let noti_cards = document.getElementById("noti-cards");
+                let message = document.createElement('p')
+                message.innerText = `Your latest purchase ${latest_purchase.coinname} price has increased. Consider selling if you wish`
+                noti_cards.append(message);
+                let mark_read = document.getElementById("mark-read")
+                mark_read.addEventListener("click",()=>{
+                    noti_cards.innerHTML = ""
+                })
+                
+            }
+            else{
+                console.log("decrease");
+                let noti_cards = document.getElementById("noti-cards");
+                let message = document.createElement('p')
+                message.innerText = `Your latest purchase ${latest_purchase.coinname} price has decreased. Consider buying more if you wish`
+                noti_cards.append(message);
+                let mark_read = document.getElementById("mark-read")
+                mark_read.addEventListener("click",()=>{
+                    noti_cards.innerHTML = ""
+                })
+            }
+            
+
+        }
+        
+    } catch (error) {
+        console.log(error)
+    }
+  }
+  checkCoin(latest_purchase);

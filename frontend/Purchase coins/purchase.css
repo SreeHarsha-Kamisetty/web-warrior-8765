@@ -96,6 +96,7 @@ button {
 #payment-sec{
     display: flex;
     margin-top: 5%;
+    flex-direction: column;
 }
 
 #form-div{

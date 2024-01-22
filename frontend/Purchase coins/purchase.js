@@ -164,7 +164,17 @@ const current_quantity = document.getElementById('currentQuantity');
 const buy_button = document.getElementById('buyButton');
 const sell_button = document.getElementById('sellButton');
 const total_payment = document.getElementById('totalPayment');
-
+// quantity logic 
+let error = document.getElementById("error");
+quantity_input.addEventListener("input",()=>{
+  total_payment.innerText = +purchase_coin_price.innerText * +quantity_input.value
+  if(+total_payment.innerText>+balance.innerText){
+    error.innerText = "Insufficient funds";
+  }
+  else{
+    error.innerText="";
+  }
+})
 function getPurchaseForm() {
   purchase_coin_name.innerHTML = "";
   purchase_coin_price.innerHTML = "";
@@ -246,20 +256,28 @@ buyBtn.addEventListener("click",async(e)=>{
       "marketcap":details.market_price
     }
     // console.log(payload);
-    try {
-      let res = await fetch(`https://coinsquare.onrender.com/payments/new`,{
-          method:"POST",
-          headers:{
-            "Content-type":"application/json"
-          },
-          body:JSON.stringify(payload)
-      })
-      let data = await res.json()
-      // console.log(data)
-      window.location.href="../userDashboard/dashboard.html"
-  } catch (error) {
-      console.log(error);
-  }
+    if(+balance.innerText<+total_payment.innerText){
+      
+      error.innerText = ""
+      error.innerText = "insufficient funds, please add more"
+    }
+    else{
+      
+      try {
+        let res = await fetch(`https://coinsquare.onrender.com/payments/new`,{
+            method:"POST",
+            headers:{
+              "Content-type":"application/json"
+            },
+            body:JSON.stringify(payload)
+        })
+        let data = await res.json()
+        // console.log(data)
+        window.location.href="../userDashboard/dashboard.html"
+    } catch (error) {
+        console.log(error);
+    }
+    }
  
 })
 let sellBtn = document.getElementById("sellButton");
@@ -280,18 +298,28 @@ sellBtn.addEventListener("click",async(e)=>{
       "marketcap":details.market_price
     }
     // console.log(payload);
-    try {
-      let res = await fetch(`https://coinsquare.onrender.com/payments/new`,{
-          method:"POST",
-          headers:{
-            "Content-type":"application/json"
-          },
-          body:JSON.stringify(payload)
-      })
-      let data = await res.json()
-      // console.log(data)
-      window.location.href="../userDashboard/dashboard.html"
-  } catch (error) {
-      console.log(error);
-  }
+    if(+quantity_input.value>+current_quantity.innerText){
+      error.innerText = ""
+      error.innerText = "Insufficient quanity , you cannot sell more than you own"
+    }
+    else{
+      try {
+        let res = await fetch(`https://coinsquare.onrender.com/payments/new`,{
+            method:"POST",
+            headers:{
+              "Content-type":"application/json"
+            },
+            body:JSON.stringify(payload)
+        })
+        let data = await res.json()
+        // console.log(data)
+        window.location.href="../userDashboard/dashboard.html"
+    } catch (error) {
+        console.log(error);
+    }
+    }
+  
 })
+
+// quantity 
+let quantity = document.getElementById("quantity");

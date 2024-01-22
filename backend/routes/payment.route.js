@@ -126,7 +126,25 @@ paymentRouter.get("/available/:userID/:coin",async(req,res)=>{
     }
 })
 
-
+paymentRouter.get("/",async(req,res)=>{
+    try {
+        let userdata = await UserModel.find().count();
+        let payment_count = await PaymentModel.find().count();
+        let investements = await UserModel.aggregate([
+            {
+              $group: {
+                _id: null,
+                total: { $sum: "$investements" }
+              }
+            }
+          ])
+          investements = investements[0].total
+          res.status(200).json({userdata,payment_count,investements})
+          
+    } catch (error) {
+        res.status(400).json({error})
+    }
+})
 
 
 module.exports={

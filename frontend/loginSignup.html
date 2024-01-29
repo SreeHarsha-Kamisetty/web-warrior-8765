@@ -23,6 +23,8 @@
           <input type="password" placeholder="Enter your password" id="passl" />
           <a href="forgotPassword.html">Forgot password?</a>
           <input type="button" class="button" value="Login" id="loginbtn" />
+          <div id="error-message" style="color: red;"></div>
+          <br>
         </form>
         <div style="color: hsl(220, 5%, 20%)" id="logged"></div>
         <div class="signup">
@@ -126,7 +128,8 @@
           }, 0);
         } else {
           console.log("user is not reg");
-          alert("wrong Credential");
+          let error = document.getElementById("error-message")
+          error.innerText = "Incorrect Credentials"
         }
       })
       .catch((err) => console.log(err));
